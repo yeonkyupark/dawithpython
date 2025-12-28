@@ -8,7 +8,7 @@
 
 <meta name="keywords" content="python, 파이썬, numpy, 넘파이, 넘피, pandas, 판다스, machine learning, 기계학습, 머신러닝, 회귀, 분류, 군집">
 
-<title>분류분석 – 데이터 분석 (파이썬)</title>
+<title>데이터 변환 – 데이터 분석 (파이썬)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./clustering.html" rel="next">
-<link href="./regression.html" rel="prev">
+<link href="./regression.html" rel="next">
+<link href="./data_reshape.html" rel="prev">
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression.html">II. 기계학습</a></li><li class="breadcrumb-item"><a href="./classification.html"><span class="chapter-title">분류분석</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">I. 데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_transform.html"><span class="chapter-title">데이터 변환</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_transform.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변환</span></a>
+  <a href="./data_transform.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">데이터 변환</span></a>
   </div>
 </li>
       </ul>
@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./classification.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">분류분석</span></a>
+  <a href="./classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">분류분석</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -204,9 +204,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression.html">II. 기계학습</a></li><li class="breadcrumb-item"><a href="./classification.html"><span class="chapter-title">분류분석</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">I. 데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_transform.html"><span class="chapter-title">데이터 변환</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">분류분석</span></h1>
+<h1 class="title"><span class="chapter-title">데이터 변환</span></h1>
 </div>
 
 
@@ -641,13 +641,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./regression.html" class="pagination-link" aria-label="회귀분석">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">회귀분석</span></span>
+      <a href="./data_reshape.html" class="pagination-link" aria-label="데이터 변형">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">데이터 변형</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./clustering.html" class="pagination-link" aria-label="군집분석">
-        <span class="nav-page-text"><span class="chapter-title">군집분석</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./regression.html" class="pagination-link" aria-label="회귀분석">
+        <span class="nav-page-text"><span class="chapter-title">회귀분석</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -659,7 +659,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/classification.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/data_transform.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Data Analytics with Python</p>
 </div>

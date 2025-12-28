@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./regression.html" rel="next">
+<link href="./data_reshape.html" rel="next">
 <link href="./index.html" rel="prev">
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -173,6 +173,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="./data_load_save.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">데이터 적재와 저장</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_reshape.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변형</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_transform.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변환</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -192,6 +202,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">분류분석</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./clustering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">군집분석</span></a>
   </div>
 </li>
       </ul>
@@ -223,11 +238,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#데이터-적재" id="toc-데이터-적재" class="nav-link active" data-scroll-target="#데이터-적재">데이터 적재</a></li>
+  <li><a href="#데이터-적재" id="toc-데이터-적재" class="nav-link active" data-scroll-target="#데이터-적재">데이터 적재</a>
+  <ul>
+  <li><a href="#csv-파일-적재" id="toc-csv-파일-적재" class="nav-link" data-scroll-target="#csv-파일-적재">CSV 파일 적재</a></li>
+  </ul></li>
   <li><a href="#데이터-저장" id="toc-데이터-저장" class="nav-link" data-scroll-target="#데이터-저장">데이터 저장</a>
   <ul>
   <li><a href="#csv-파일-저장" id="toc-csv-파일-저장" class="nav-link" data-scroll-target="#csv-파일-저장">CSV 파일 저장</a></li>
   </ul></li>
+  <li><a href="#결측치-처리" id="toc-결측치-처리" class="nav-link" data-scroll-target="#결측치-처리">결측치 처리</a></li>
+  <li><a href="#이상치-처리" id="toc-이상치-처리" class="nav-link" data-scroll-target="#이상치-처리">이상치 처리</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/data_load_save.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -262,6 +282,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.</p>
 <section id="데이터-적재" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-적재">데이터 적재</h2>
+<section id="csv-파일-적재" class="level3">
+<h3 class="anchored" data-anchor-id="csv-파일-적재">CSV 파일 적재</h3>
 <p>데이터를 적재하는 가장 기본적인 방법은 <code>pandas.read_csv()</code> 함수를 사용하는 것이다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pandas.read_csv(filepath_or_buffer, </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                sep<span class="op">=</span><span class="st">'구분자'</span>, </span>
@@ -270,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                na_values<span class="op">=</span>[<span class="st">"결측치로 인식할 값"</span>], </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                keep_default_na<span class="op">=</span>Fasle)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>keep_default_na</code> 값을 <code>True</code>로 설정하면 기본 결측치 목록(NaN, N/A, NA, NULL, None, 빈문자열)을 그대로 사용한다. 반면 <code>False</code>로 지정하면 <code>na_values</code> 목록만 결측치로 변환한다. <code>False</code> 지정 후 <code>na_values</code>를 설정하지 않으면 어떤 값도 자동으로 결측치로 변환되지 않는다.</p>
-<div id="aab5be7b" class="cell" data-execution_count="1">
+<div id="4ef67f71" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/</span><span class="op">\</span></span>
@@ -296,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>header</code> 위치를 변경하면 다음과 같은 결과를 얻는다.</p>
-<div id="24f612c7" class="cell" data-execution_count="2">
+<div id="362bd510" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url, header <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -310,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>원본 데이터에는 결측치를<code>NA</code>로 처리했다. <code>keep_default_na</code> 옵션 변경에 따라 결측치는 다르게 처리된다.</p>
-<div id="5c79fcff" class="cell" data-execution_count="3">
+<div id="434e8aef" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url, keep_default_na<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -331,6 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+</section>
 <section id="데이터-저장" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-저장">데이터 저장</h2>
 <p>처리된 데이터는 상황이나 과제에 따라 다양한 형태로 저장할 수 있다. 우선 가장 일반적인 csv 형태로 저장하는 방법을 알아 본다.</p>
@@ -341,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                index<span class="op">=</span><span class="st">'인덱스포함여부'</span>,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                sep<span class="op">=</span><span class="st">'구분자'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>데이터 저장 시 어떤 인코딩을 적용했는지 명시적으로 지정한다. pandas 경우 <code>utf-8</code>을 기본 인코딩으로 사용한다. 반면 윈도우즈 엑셀은 <code>cp949</code>를 인코딩으로 사용한다. 이렇게 인코딩이 다른 경우 한글이 깨지는 현상이 발생한다.</p>
-<div id="2011e0ac" class="cell" data-execution_count="4">
+<div id="4b84e7de" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 한글이 포함된 DataFrame 생성</span></span>
@@ -353,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># UTF-8로 저장 (BOM 없음)</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"korean_utf8.csv"</span>, index<span class="op">=</span><span class="va">False</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="033062f2" class="cell" data-execution_count="5">
+<div id="74eaa625" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_broken <span class="op">=</span> pd.read_csv(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"korean_utf8.csv"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    encoding<span class="op">=</span><span class="st">"cp949"</span>,</span>
@@ -368,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>위 예제는 <code>utf-8</code>로 저장하고 <code>cp949</code>로 읽었을 때 상황이다. 인코딩을 맞추게 되면 정상 출력된다.</p>
-<div id="b61552be" class="cell" data-execution_count="6">
+<div id="4982fd53" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_matched <span class="op">=</span> pd.read_csv(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"korean_utf8.csv"</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    encoding<span class="op">=</span><span class="st">"utf-8"</span>,</span>
@@ -382,12 +405,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1  김철수  스마트팩토리</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="결측치-처리" class="level2">
+<h2 class="anchored" data-anchor-id="결측치-처리">결측치 처리</h2>
+</section>
+<section id="이상치-처리" class="level2">
+<h2 class="anchored" data-anchor-id="이상치-처리">이상치 처리</h2>
 <br>
 <pre>마직막 편집일: 2025.12.28.
 </pre>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -804,8 +833,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./regression.html" class="pagination-link" aria-label="회귀분석">
-        <span class="nav-page-text"><span class="chapter-title">회귀분석</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data_reshape.html" class="pagination-link" aria-label="데이터 변형">
+        <span class="nav-page-text"><span class="chapter-title">데이터 변형</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
