@@ -29,10 +29,7 @@ jobs:
             created=$(git log --reverse --format=%ad --date=format:'%Y. %m. %d.' -- "$file" | head -1)
             updated=$(git log -1 --format=%ad --date=format:'%Y. %m. %d.' -- "$file")
 
-            cat <<EOF > "$meta"
-created: "$created"
-updated: "$updated"
-EOF
+            printf 'created: "%s"\nupdated: "%s"\n' "$created" "$updated" > "$meta"
           done
 
       - name: Render Quarto Book
@@ -43,7 +40,6 @@ EOF
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add docs
+          git add docs _metadata
           git commit -m "Auto-render Quarto Book" || echo "No changes to commit"
           git push
-
