@@ -20,18 +20,23 @@ jobs:
 
       - name: Generate per-file metadata
         run: |
-          mkdir -p _metadata
-
           for file in *.qmd chapters/*.qmd; do
             [ -f "$file" ] || continue
-
-            base=$(basename "$file" .qmd)
-            meta="_metadata/$base.yml"
 
             created=$(git log --reverse --format=%ad --date=format:'%Y. %m. %d.' -- "$file" | head -1)
             updated=$(git log -1 --format=%ad --date=format:'%Y. %m. %d.' -- "$file")
 
-            printf 'created: "%s"\nupdated: "%s"\n' "$created" "$updated" > "$meta"
+            if grep -q '^created:' "$file"; then
+              sed -i "s/^created:.*/created: $created/" "$file"
+            else
+              sed -i "1,/^---$/s/^---$/---\ncreated: $created/" "$file"
+            fi
+
+            if grep -q '^updated:' "$file"; then
+              sed -i "s/^updated:.*/updated: $updated/" "$file"
+            else
+              sed -i "1,/^---$/s/^---$/---\nupdated: $updated/" "$file"
+            fi
           done
 
       - name: Render Quarto Book
