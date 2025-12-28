@@ -40,3 +40,13 @@ pre.sourceCode {
   background-color: white;
   border-radius: 6px;
 }
+
+.cell-code {
+  background-color: #ecfdf5;
+  border-left-color: #10b981;
+}
+
+.cell-output {
+  background-color: #f0fdf9;
+  border-left-color: #10b981;
+}
