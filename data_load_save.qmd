@@ -5,5 +5,14 @@
 ## 데이터 적재 
 
 
+```{python}
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv"
+dataset = pd.read_csv("url")
+
+print(df.head())
+```
+
 ## 데이터 저장 
 

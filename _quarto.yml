@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: docs
+  output-dir: _site
 
 metadata:
   google-site-verification: "8xHzi-r2KaeozfPyDbwq2rtYE8sEI8Xu6irhM0ccwBU"
