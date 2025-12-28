@@ -3,21 +3,20 @@ project:
   output-dir: docs
 
 metadata:
-  title: "파이썬으로 데이터 분석하기"
   google-site-verification: "8xHzi-r2KaeozfPyDbwq2rtYE8sEI8Xu6irhM0ccwBU"
   keywords: ["python", "파이썬", "numpy", "넘파이", "넘피", "pandas", "판다스", "machine learning", "기계학습", "머신러닝", "회귀", "분류", "군집"]
 
 book:
-  title: "데이터 분석 w/ 파이썬"
+  title: "데이터 분석 (파이썬)"
   author: "느리게"
   date: last-modified
-  repo-url: https://github.com/yeonkyupark/python_beginner 
+  repo-url: https://github.com/yeonkyupark/dawithpython 
   repo-branch: main
   repo-actions: [edit]
   favicon: logo.png
   page-footer: 
-    left: "Copyright(c) 2025 YK" 
-    right: "Python Handling"
+    left: "Copyright(c) 2026 YK" 
+    right: "Data Analytics with Python"
   sidebar: 
     tools:
       - icon: instagram
@@ -40,12 +39,18 @@ book:
 
 bibliography: references.bib
 
+number-sections: false
+
 format:
   html:
     css: styles.css
     theme:
       - cosmo
       - brand
+    include-in-header: adsense.html
+    include-after-body: adsense-body.html
 
 
-
+toc: true
+toc-depth: 4
+toc-title: 목차
