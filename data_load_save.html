@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_load_save.html"><span class="chapter-title">데이터 적재와 저장</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">I. 데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_load_save.html"><span class="chapter-title">데이터 적재와 저장</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">데이터 처리</span></a>
+ <span class="menu-text">I. 데이터 처리</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">기계학습</span></a>
+ <span class="menu-text">II. 기계학습</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_load_save.html"><span class="chapter-title">데이터 적재와 저장</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">I. 데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_load_save.html"><span class="chapter-title">데이터 적재와 저장</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">데이터 적재와 저장</span></h1>
 </div>
@@ -259,13 +259,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.</p>
 <section id="데이터-적재" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-적재">데이터 적재</h2>
-<div id="8b589b6c" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>데이터를 적재하는 가장 기본적인 방법은 <code>pandas.read_csv()</code> 함수를 사용하는 것이다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pandas.read_csv(filepath_or_buffer, sep<span class="op">=</span><span class="st">'구분자'</span>, header<span class="op">=</span><span class="st">"컬럼명이 있는 행번호"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                encoding<span class="op">=</span><span class="st">"인코딩종류"</span>, na_values<span class="op">=</span>[<span class="st">"결측치로 인식할 값"</span>], keep_default_na<span class="op">=</span>Fasle)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>keep_default_na</code> 값을 <code>True</code>로 설정하면 기본 결측치 목록(NaN, N/A, NA, NULL, None, 빈문자열)을 그대로 사용한다. 반면 <code>False</code>로 지정하면 <code>na_values</code> 목록만 결측치로 변환한다. <code>False</code> 지정 후 <code>na_values</code>를 설정하지 않으면 어떤 값도 자동으로 결측치로 변환되지 않는다.</p>
+<div id="d5d30d4d" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \
 0  Adelie  Torgersen            39.1           18.7              181.0   
@@ -280,6 +284,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 2       3250.0  female  2007  
 3          NaN     NaN  2007  
 4       3450.0  female  2007  </code></pre>
+</div>
+</div>
+<p><code>header</code> 위치를 변경하면 다음과 같은 결과를 얻는다.</p>
+<div id="566eae8d" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url, header <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Adelie  Torgersen  39.1  18.7    181    3750    male  2007
+0  Adelie  Torgersen  39.5  17.4  186.0  3800.0  female  2007
+1  Adelie  Torgersen  40.3  18.0  195.0  3250.0  female  2007
+2  Adelie  Torgersen   NaN   NaN    NaN     NaN     NaN  2007
+3  Adelie  Torgersen  36.7  19.3  193.0  3450.0  female  2007
+4  Adelie  Torgersen  39.3  20.6  190.0  3650.0    male  2007</code></pre>
+</div>
+</div>
+<p>원본 데이터에는 결측치를<code>NA</code>로 처리했다. <code>keep_default_na</code> 옵션 변경에 따라 결측치는 다르게 처리된다.</p>
+<div id="af63da7a" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url, keep_default_na<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  species     island bill_length_mm bill_depth_mm flipper_length_mm  \
+0  Adelie  Torgersen           39.1          18.7               181   
+1  Adelie  Torgersen           39.5          17.4               186   
+2  Adelie  Torgersen           40.3            18               195   
+3  Adelie  Torgersen             NA            NA                NA   
+4  Adelie  Torgersen           36.7          19.3               193   
+
+  body_mass_g     sex  year  
+0        3750    male  2007  
+1        3800  female  2007  
+2        3250  female  2007  
+3          NA      NA  2007  
+4        3450  female  2007  </code></pre>
 </div>
 </div>
 </section>

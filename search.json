@@ -14,9 +14,20 @@
     "href": "data_load_save.html",
     "title": "데이터 적재와 저장",
     "section": "",
-    "text": "데이터 적재\n데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.\nimport pandas as pd\n\nurl = \"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv\"\ndataset = pd.read_csv(url)\n\nprint(dataset.head())\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0  Adelie  Torgersen            39.1           18.7              181.0   \n1  Adelie  Torgersen            39.5           17.4              186.0   \n2  Adelie  Torgersen            40.3           18.0              195.0   \n3  Adelie  Torgersen             NaN            NaN                NaN   \n4  Adelie  Torgersen            36.7           19.3              193.0   \n\n   body_mass_g     sex  year  \n0       3750.0    male  2007  \n1       3800.0  female  2007  \n2       3250.0  female  2007  \n3          NaN     NaN  2007  \n4       3450.0  female  2007",
+    "text": "데이터 적재\n데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.\n데이터를 적재하는 가장 기본적인 방법은 pandas.read_csv() 함수를 사용하는 것이다.\nkeep_default_na 값을 True로 설정하면 기본 결측치 목록(NaN, N/A, NA, NULL, None, 빈문자열)을 그대로 사용한다. 반면 False로 지정하면 na_values 목록만 결측치로 변환한다. False 지정 후 na_values를 설정하지 않으면 어떤 값도 자동으로 결측치로 변환되지 않는다.\nimport pandas as pd\n\nurl = \"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv\"\ndataset = pd.read_csv(url)\n\nprint(dataset.head())\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0  Adelie  Torgersen            39.1           18.7              181.0   \n1  Adelie  Torgersen            39.5           17.4              186.0   \n2  Adelie  Torgersen            40.3           18.0              195.0   \n3  Adelie  Torgersen             NaN            NaN                NaN   \n4  Adelie  Torgersen            36.7           19.3              193.0   \n\n   body_mass_g     sex  year  \n0       3750.0    male  2007  \n1       3800.0  female  2007  \n2       3250.0  female  2007  \n3          NaN     NaN  2007  \n4       3450.0  female  2007\nheader 위치를 변경하면 다음과 같은 결과를 얻는다.\ndataset = pd.read_csv(url, header = 1)\n\nprint(dataset.head())\n\n   Adelie  Torgersen  39.1  18.7    181    3750    male  2007\n0  Adelie  Torgersen  39.5  17.4  186.0  3800.0  female  2007\n1  Adelie  Torgersen  40.3  18.0  195.0  3250.0  female  2007\n2  Adelie  Torgersen   NaN   NaN    NaN     NaN     NaN  2007\n3  Adelie  Torgersen  36.7  19.3  193.0  3450.0  female  2007\n4  Adelie  Torgersen  39.3  20.6  190.0  3650.0    male  2007\n원본 데이터에는 결측치를NA로 처리했다. keep_default_na 옵션 변경에 따라 결측치는 다르게 처리된다.\ndataset = pd.read_csv(url, keep_default_na=False)\n\nprint(dataset.head())\n\n  species     island bill_length_mm bill_depth_mm flipper_length_mm  \\\n0  Adelie  Torgersen           39.1          18.7               181   \n1  Adelie  Torgersen           39.5          17.4               186   \n2  Adelie  Torgersen           40.3            18               195   \n3  Adelie  Torgersen             NA            NA                NA   \n4  Adelie  Torgersen           36.7          19.3               193   \n\n  body_mass_g     sex  year  \n0        3750    male  2007  \n1        3800  female  2007  \n2        3250  female  2007  \n3          NA      NA  2007  \n4        3450  female  2007",
     "crumbs": [
-      "데이터 처리",
+      "I. 데이터 처리",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>데이터 적재와 저장</span>"
+    ]
+  },
+  {
+    "objectID": "data_load_save.html#데이터-적재",
+    "href": "data_load_save.html#데이터-적재",
+    "title": "데이터 적재와 저장",
+    "section": "",
+    "text": "pandas.read_csv(filepath_or_buffer, sep='구분자', header=\"컬럼명이 있는 행번호\", \n                encoding=\"인코딩종류\", na_values=[\"결측치로 인식할 값\"], keep_default_na=Fasle)",
+    "crumbs": [
+      "I. 데이터 처리",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>데이터 적재와 저장</span>"
     ]
   },
@@ -27,7 +38,7 @@
     "section": "데이터 저장",
     "text": "데이터 저장",
     "crumbs": [
-      "데이터 처리",
+      "I. 데이터 처리",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>데이터 적재와 저장</span>"
     ]
   },
