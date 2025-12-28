@@ -16,6 +16,25 @@ jobs:
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Generate per-file metadata
+        run: |
+          mkdir -p _metadata
+
+          for file in *.qmd chapters/*.qmd; do
+            [ -f "$file" ] || continue
+
+            base=$(basename "$file" .qmd)
+            meta="_metadata/$base.yml"
+
+            created=$(git log --reverse --format=%ad --date=format:'%Y. %m. %d.' -- "$file" | head -1)
+            updated=$(git log -1 --format=%ad --date=format:'%Y. %m. %d.' -- "$file")
+
+            cat <<EOF > "$meta"
+            created: "$created"
+            updated: "$updated"
+            EOF
+          done
+
       - name: Render Quarto Book
         run: |
           quarto render
@@ -27,3 +46,4 @@ jobs:
           git add docs
           git commit -m "Auto-render Quarto Book" || echo "No changes to commit"
           git push
+

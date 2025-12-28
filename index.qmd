@@ -1,3 +1,8 @@
+<div class="page-meta">
+- 최초 작성일: {{< meta created >}}
+- 최종 수정일: {{< meta updated >}}
+</div>
+
 # Preface {.unnumbered}
 
 This is a Quarto book.
