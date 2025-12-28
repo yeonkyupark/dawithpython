@@ -14,7 +14,7 @@
     "href": "data_load_save.html",
     "title": "데이터 적재와 저장",
     "section": "",
-    "text": "데이터 적재\n데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.",
+    "text": "데이터 적재\n데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.\nimport pandas as pd\n\nurl = \"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv\"\ndataset = pd.read_csv(url)\n\nprint(dataset.head())\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0  Adelie  Torgersen            39.1           18.7              181.0   \n1  Adelie  Torgersen            39.5           17.4              186.0   \n2  Adelie  Torgersen            40.3           18.0              195.0   \n3  Adelie  Torgersen             NaN            NaN                NaN   \n4  Adelie  Torgersen            36.7           19.3              193.0   \n\n   body_mass_g     sex  year  \n0       3750.0    male  2007  \n1       3800.0  female  2007  \n2       3250.0  female  2007  \n3          NaN     NaN  2007  \n4       3450.0  female  2007",
     "crumbs": [
       "데이터 처리",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>데이터 적재와 저장</span>"
