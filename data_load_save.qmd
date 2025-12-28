@@ -238,6 +238,49 @@ print(df_mode.loc[na_index, ['species']+num_cols])
 
 ### 모델링
 
+```{python}
+import pandas as pd
+from palmerpenguins import load_penguins
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+from sklearn.ensemble import RandomForestRegressor
+
+# 1. 데이터셋 로드
+penguins = load_penguins()
+
+# 2. 수치형 데이터 선택
+numeric_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']
+df_numeric = penguins[numeric_cols]
+
+# 대체 전 결측치 확인
+print("대체 전 결측치 상황:")
+print(df_numeric.isnull().sum())
+na_index = df_numeric.loc[df_numeric.isna().any(axis=1), :].index
+print(df_numeric.loc[na_index, :])
+
+
+# 3. IterativeImputer 설정
+imputer = IterativeImputer(
+    estimator=RandomForestRegressor(n_estimators=10, random_state=42),
+    max_iter=10,
+    random_state=42
+)
+
+# 4. 결측치 대체 수행
+df_imputed = imputer.fit_transform(df_numeric)
+
+# 5. 결과를 다시 데이터프레임으로 변환
+df_final = pd.DataFrame(df_imputed, columns=numeric_cols)
+
+print("\n대체 후 결측치 상황:")
+print(df_final.isnull().sum())
+print(df_final.loc[na_index, :])
+
+# 원본 데이터와 합치기 (필요한 경우)
+penguins[numeric_cols] = df_final
+
+```
+
 
 
 ## 이상치 처리 
