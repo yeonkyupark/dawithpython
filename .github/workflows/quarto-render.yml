@@ -30,9 +30,9 @@ jobs:
             updated=$(git log -1 --format=%ad --date=format:'%Y. %m. %d.' -- "$file")
 
             cat <<EOF > "$meta"
-            created: "$created"
-            updated: "$updated"
-            EOF
+created: "$created"
+updated: "$updated"
+EOF
           done
 
       - name: Render Quarto Book
