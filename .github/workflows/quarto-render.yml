@@ -1,9 +1,8 @@
-name: Render Quarto Book
+name: Render & Deploy Quarto Book
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -13,20 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render Quarto Book
-        run: |
-          quarto render
+      - name: Render book
+        run: quarto render
 
-      - name: Commit rendered book
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add -f docs 
-          git commit -m "Auto-render Quarto Book" || echo "No changes to commit"
-          git push
+      - name: Deploy to gh-pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
