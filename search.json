@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "데이터 분석 (파이썬)",
     "section": "",
-    "text": "들어가기\n파이썬(Python Software Foundation 2025)으로 데이터 분석에 필요한 내용을 정리한다. 실무에서 필요한 내용 중심으로 구성되어 있어 학습에 비효율적일 수도 있다.\n크게 데이터를 다루는 부분과 기계학습을 통해 유의미한 패턴이나 인사이트를 도출하는 부분으로 구성된다.\n데이터 처리는 넘파이(NumFOCUS sponsored project 2025)와 판다스(pandas?)를 기본으로 사용하며 필요한 경우 별도 라이브러리를 이용한다.\n\n데이터 적재와 저장\n데이터 변형\n데이터 변환\n\n기계학습은 sklearn을 기본으로 일반적인 기계학습 알고리즘으로 분석을 진행한다.\n\n회귀\n분류\n군집\n\n그 외 필요한 내용은 부록에 수록한다.\n마직막 편집일: 2025.12.28.\n\n\n\n\nNumFOCUS sponsored project. 2025. “Numpy.” 2025. hhttps://numpy.org/.\n\n\nPython Software Foundation. 2025. “Python Programming Language.” 2025. https://www.python.org/.",
+    "text": "들어가기\n파이썬(Python 2025)으로 데이터 분석에 필요한 내용을 정리한다. 실무에서 필요한 내용 중심으로 구성되어 있어 학습에 비효율적일 수도 있다.\n크게 데이터를 다루는 부분과 기계학습을 통해 유의미한 패턴이나 인사이트를 도출하는 부분으로 구성된다.\n데이터 처리는 넘파이(Numpy 2025)와 판다스(pandas?)를 기본으로 사용하며 필요한 경우 별도 라이브러리를 이용한다.\n\n데이터 적재와 저장\n데이터 변형\n데이터 변환\n\n기계학습은 sklearn을 기본으로 일반적인 기계학습 알고리즘으로 분석을 진행한다.\n\n회귀\n분류\n군집\n\n그 외 필요한 내용은 부록에 수록한다.\n마직막 편집일: 2025.12.28.\n\n\n\n\nNumpy. 2025. “Numpy.” 2025. https://numpy.org/.\n\n\nPython. 2025. “Python Programming Language.” 2025. https://www.python.org/.",
     "crumbs": [
       "들어가기"
     ]
@@ -36,7 +36,7 @@
     "href": "references.html",
     "title": "참고자료",
     "section": "",
-    "text": "NumFOCUS sponsored project. 2025. “Numpy.” 2025. hhttps://numpy.org/.\n\n\nPython Software Foundation. 2025. “Python Programming\nLanguage.” 2025. https://www.python.org/.",
+    "text": "Numpy. 2025. “Numpy.” 2025. https://numpy.org/.\n\n\nPython. 2025. “Python Programming Language.” 2025. https://www.python.org/.",
     "crumbs": [
       "부록",
       "참고자료"
