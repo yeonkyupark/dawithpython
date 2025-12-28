@@ -1,5 +1,9 @@
-# Introduction
+# 데이터 적재와 저장
 
-This is a book created from markdown and executable code.
+데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.
 
-See @knuth84 for additional discussion of literate programming.
+## 데이터 적재 
+
+
+## 데이터 저장 
+
