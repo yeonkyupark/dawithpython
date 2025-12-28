@@ -282,6 +282,56 @@ penguins[numeric_cols] = df_final
 ```
 
 
+다음은 범주별 모델링을 적용한 예제이다.
+
+```{python}
+import pandas as pd
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+from sklearn.ensemble import RandomForestRegressor
+
+# 1. 데이터셋 로드
+penguins = load_penguins()
+
+# 대체에 사용할 수치형 컬럼 정의
+numeric_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']
+
+# 2. 그룹별 대체를 수행할 함수 정의
+def impute_by_group(group):
+    # 각 그룹 내에서 수치형 데이터만 추출
+    group_numeric = group[numeric_cols]
+    
+    # 모델 기반 대치기 설정 (RandomForest 사용)
+    imputer = IterativeImputer(
+        estimator=RandomForestRegressor(n_estimators=10, random_state=42),
+        max_iter=10,
+        random_state=42
+    )
+    
+    # 데이터가 모두 결측치인 경우 등을 대비해 예외 처리 후 대치
+    if group_numeric.isnull().all().all():
+        return group
+    
+    imputed_values = imputer.fit_transform(group_numeric)
+    group[numeric_cols] = imputed_values
+    return group
+
+# 3. species 컬럼을 기준으로 그룹화하여 함수 적용
+# 성별(sex)에 결측치가 있는 경우도 있으므로 전체 데이터프레임 유지
+penguins_imputed = penguins.groupby('species', group_keys=False).apply(impute_by_group)
+
+# 4. 결과 확인
+print("종별 대체 후 결측치 현황:")
+print(penguins_imputed[numeric_cols].isnull().sum())
+na_index = df_numeric.loc[df_numeric.isna().any(axis=1), :].index
+print(penguins_imputed.loc[na_index, :])
+
+# 특정 종의 결과 예시 출력 (Adelie)
+print("\nAdelie 종의 요약 통계량 (대체 후):")
+print(penguins_imputed[penguins_imputed['species'] == 'Adelie'][numeric_cols].describe())
+```
+
+
 
 ## 이상치 처리 
 
