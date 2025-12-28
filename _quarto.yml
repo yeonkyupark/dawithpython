@@ -26,10 +26,10 @@ book:
     collapse-level: 2
   chapters:
     - index.qmd
-    - part: "데이터 처리"
+    - part: "I. 데이터 처리"
       chapters: 
         - data_load_save.qmd
-    - part: "기계학습"
+    - part: "II. 기계학습"
       chapters:
         - regression.qmd
         - classification.qmd
