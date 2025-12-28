@@ -1,0 +1,19 @@
+/* Code output block */
+.cell-output {
+  background-color: #f7f9fb;
+  border-left: 4px solid #d0d7de;
+  padding: 0.75em 1em;
+  margin-top: 0.5em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.cell-output-stdout {
+  color: #374151;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.cell-output-display table {
+  background-color: white;
+  border-radius: 6px;
+}
