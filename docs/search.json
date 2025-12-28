@@ -12,23 +12,23 @@
   {
     "objectID": "data_load_save.html",
     "href": "data_load_save.html",
-    "title": "1  Introduction",
+    "title": "1  데이터 적재와 저장",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "1.1 데이터 적재\n데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.",
     "crumbs": [
       "데이터 처리",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>데이터 적재와 저장</span>"
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "data_load_save.html#데이터-저장",
+    "href": "data_load_save.html#데이터-저장",
+    "title": "1  데이터 적재와 저장",
+    "section": "1.2 데이터 저장",
+    "text": "1.2 데이터 저장",
     "crumbs": [
-      "부록",
-      "References"
+      "데이터 처리",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>데이터 적재와 저장</span>"
     ]
   }
 ]
