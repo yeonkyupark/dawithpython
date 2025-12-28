@@ -4,6 +4,8 @@
 
 ## 데이터 적재 
 
+### CSV 파일 적재
+
 데이터를 적재하는 가장 기본적인 방법은 `pandas.read_csv()` 함수를 사용하는 것이다.
 
 ```python
@@ -101,6 +103,10 @@ df_matched = pd.read_csv(
 
 print(df_matched)
 ```
+
+## 결측치 처리 
+
+## 이상치 처리 
 
 
 <br>

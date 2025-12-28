@@ -29,10 +29,13 @@ book:
     - part: "I. 데이터 처리"
       chapters: 
         - data_load_save.qmd
+        - data_reshape.qmd
+        - data_trasform.qmd
     - part: "II. 기계학습"
       chapters:
         - regression.qmd
         - classification.qmd
+        - clustering.qmd
     - part: "부록"
       chapters:
         - references.qmd
