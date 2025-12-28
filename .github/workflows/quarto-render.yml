@@ -17,14 +17,25 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Ensure gh-pages branch exists
+        run: |
+          if ! git ls-remote --exit-code --heads origin gh-pages; then
+            git checkout --orphan gh-pages
+            git rm -rf .
+            echo "Initializing gh-pages branch" > index.html
+            git add index.html
+            git commit -m "Initialize gh-pages"
+            git push origin gh-pages
+            git checkout main
+          fi
+
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render book
         run: quarto render
 
-      - name: Deploy to gh-pages
+      - name: Publish to gh-pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          force: true
