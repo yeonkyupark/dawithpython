@@ -7,8 +7,12 @@
 데이터를 적재하는 가장 기본적인 방법은 `pandas.read_csv()` 함수를 사용하는 것이다.
 
 ```python
-pandas.read_csv(filepath_or_buffer, sep='구분자', header="컬럼명이 있는 행번호", 
-                encoding="인코딩종류", na_values=["결측치로 인식할 값"], keep_default_na=Fasle)
+pandas.read_csv(filepath_or_buffer, 
+                sep='구분자', 
+                header="컬럼명이 있는 행번호", 
+                encoding="인코딩종류", 
+                na_values=["결측치로 인식할 값"], 
+                keep_default_na=Fasle)
 ```
 
 `keep_default_na` 값을 `True`로 설정하면 기본 결측치 목록(NaN, N/A, NA, NULL, None, 빈문자열)을 그대로 사용한다. 반면 `False`로 지정하면 `na_values` 목록만 결측치로 변환한다. `False` 지정 후 `na_values`를 설정하지 않으면 어떤 값도 자동으로 결측치로 변환되지 않는다.
@@ -16,7 +20,9 @@ pandas.read_csv(filepath_or_buffer, sep='구분자', header="컬럼명이 있는
 ```{python}
 import pandas as pd
 
-url = "https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv"
+url = "https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/\
+palmerpenguins/data/penguins.csv"
+
 dataset = pd.read_csv(url)
 
 print(dataset.head())
@@ -41,3 +47,55 @@ print(dataset.head())
 
 ## 데이터 저장 
 
+처리된 데이터는 상황이나 과제에 따라 다양한 형태로 저장할 수 있다. 우선 가장 일반적인 csv 형태로 저장하는 방법을 알아 본다.
+
+### CSV 파일 저장
+
+```python
+DataFrame.to_csv('저장할 경로',
+                encoding='인코딩지정',
+                index='인덱스포함여부',
+                sep='구분자')
+```
+
+데이터 저장 시 어떤 인코딩을 적용했는지 명시적으로 지정한다. pandas 경우 `utf-8`을 기본 인코딩으로 사용한다. 반면 윈도우즈 엑셀은 `cp949`를 인코딩으로 사용한다. 이렇게 인코딩이 다른 경우 한글이 깨지는 현상이 발생한다.
+
+```{python}
+import pandas as pd
+
+# 한글이 포함된 DataFrame 생성
+df = pd.DataFrame({
+    "이름": ["홍길동", "김철수"],
+    "부서": ["생산관리", "스마트팩토리"]
+})
+
+# UTF-8로 저장 (BOM 없음)
+df.to_csv("korean_utf8.csv", index=False, encoding="utf-8")
+```
+
+```{python}
+df_broken = pd.read_csv(
+    "korean_utf8.csv",
+    encoding="cp949",
+    encoding_errors="replace"
+)
+
+print(df_broken)
+```
+
+위 예제는 `utf-8`로 저장하고 `cp949`로 읽었을 때 상황이다. 인코딩을 맞추게 되면 정상 출력된다.
+
+```{python}
+df_matched = pd.read_csv(
+    "korean_utf8.csv",
+    encoding="utf-8",
+    encoding_errors="replace"
+)
+
+print(df_matched)
+```
+
+
+<pre>
+마직막 편집일: 2025.12.28.
+</pre>
