@@ -2,10 +2,29 @@ project:
   type: book
   output-dir: docs
 
+metadata:
+  title: "파이썬으로 데이터 분석하기"
+  google-site-verification: "8xHzi-r2KaeozfPyDbwq2rtYE8sEI8Xu6irhM0ccwBU"
+  keywords: ["python", "파이썬", "numpy", "넘파이", "넘피", "pandas", "판다스", "machine learning", "기계학습", "머신러닝", "회귀", "분류", "군집"]
+
 book:
   title: "파이썬으로 데이터 분석하기"
   author: "느리게"
-  date: "2025. 12. 28."
+  date: last-modified
+  repo-url: https://github.com/yeonkyupark/python_beginner 
+  repo-branch: main
+  repo-actions: [edit]
+  favicon: logo.png
+  page-footer: 
+    left: "Copyright(c) 2025 YK" 
+    right: "Python Handling"
+  sidebar: 
+    tools:
+      - icon: instagram
+        href: https://www.instagram.com/yeonkyu.park/
+      - icon: globe
+        href: https://yeonkyupark.github.io/
+    collapse-level: 2
   chapters:
     - index.qmd
     - part: "데이터 처리"
