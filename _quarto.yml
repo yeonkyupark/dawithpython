@@ -31,7 +31,10 @@ book:
         - data_load_save.qmd
         - data_reshape.qmd
         - data_transform.qmd
-    - part: "II. 기계학습"
+    - part: "II. 가설검정"
+      chapters:
+        - hypothesis_test.qmd
+    - part: "III. 기계학습"
       chapters:
         - regression.qmd
         - classification.qmd
