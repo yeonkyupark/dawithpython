@@ -76,6 +76,94 @@
     ]
   },
   {
+    "objectID": "data_reshape.html",
+    "href": "data_reshape.html",
+    "title": "데이터 변형",
+    "section": "",
+    "text": "자료형 처리",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 변형</span>"
+    ]
+  },
+  {
+    "objectID": "data_reshape.html#데이터-구조-변형",
+    "href": "data_reshape.html#데이터-구조-변형",
+    "title": "데이터 변형",
+    "section": "데이터 구조 변형",
+    "text": "데이터 구조 변형",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 변형</span>"
+    ]
+  },
+  {
+    "objectID": "data_reshape.html#변주형-데이터-처리",
+    "href": "data_reshape.html#변주형-데이터-처리",
+    "title": "데이터 변형",
+    "section": "변주형 데이터 처리",
+    "text": "변주형 데이터 처리",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 변형</span>"
+    ]
+  },
+  {
+    "objectID": "data_transform.html",
+    "href": "data_transform.html",
+    "title": "데이터 변환",
+    "section": "",
+    "text": "정규화와 표준화",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>데이터 변환</span>"
+    ]
+  },
+  {
+    "objectID": "data_transform.html#분포-변환",
+    "href": "data_transform.html#분포-변환",
+    "title": "데이터 변환",
+    "section": "분포 변환",
+    "text": "분포 변환\n\n로그/Box-Cox/Yeo-Jonhson 변환",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>데이터 변환</span>"
+    ]
+  },
+  {
+    "objectID": "feature_selection.html",
+    "href": "feature_selection.html",
+    "title": "특징 추출",
+    "section": "",
+    "text": "변수 선택",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>특징 추출</span>"
+    ]
+  },
+  {
+    "objectID": "feature_selection.html#변수-선택",
+    "href": "feature_selection.html#변수-선택",
+    "title": "특징 추출",
+    "section": "",
+    "text": "subset 변수 선택\nstep-wise 변수 선택",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>특징 추출</span>"
+    ]
+  },
+  {
+    "objectID": "feature_selection.html#차원-축소",
+    "href": "feature_selection.html#차원-축소",
+    "title": "특징 추출",
+    "section": "차원 축소",
+    "text": "차원 축소\n\nPCA, FA, t-SNE, UMAP",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>특징 추출</span>"
+    ]
+  },
+  {
     "objectID": "hypothesis_test.html",
     "href": "hypothesis_test.html",
     "title": "가설검정",
