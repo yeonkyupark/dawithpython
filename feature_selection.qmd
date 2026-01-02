@@ -1,1 +1,10 @@
 # 특징 추출
+
+## 변수 선택
+
+- subset 변수 선택
+- step-wise 변수 선택
+
+## 차원 축소
+
+- PCA, FA, t-SNE, UMAP
