@@ -190,6 +190,11 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./data_cleaning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 정제</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./data_reshape.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변형</span></a>
   </div>
 </li>
@@ -325,11 +330,18 @@ window.Quarto = {
 <p>데이터 처리는 <code>넘파이</code><span class="citation" data-cites="numpy">(<a href="references.html#ref-numpy" role="doc-biblioref">Numpy 2025</a>)</span>와 <code>판다스</code><span class="citation" data-cites="pandas">(<a href="references.html#ref-pandas" role="doc-biblioref">Pandas 2025</a>)</span>를 기본으로 사용하며 필요한 경우 별도 라이브러리를 이용한다.</p>
 <ul>
 <li>데이터 적재</li>
+<li>데이터 정제
+<ul>
+<li>결측치, 이상치</li>
+</ul></li>
 <li>데이터 변형
 <ul>
-<li>정규화와 표준화, 범주형 데이터 처리</li>
+<li>타입 변경, 구조 변경, 범주형 데이터 처리</li>
 </ul></li>
-<li>데이터 변환</li>
+<li>데이터 변환
+<ul>
+<li>정규화와 표준화</li>
+</ul></li>
 <li>특징 추출
 <ul>
 <li>변수 선택, 차원 축소(PCA, FA)</li>
