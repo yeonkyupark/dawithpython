@@ -28,9 +28,10 @@ book:
     - index.qmd
     - part: "I. 데이터 처리"
       chapters: 
-        - data_load_save.qmd
-        - data_reshape.qmd
-        - data_transform.qmd
+        - data_load_save.qmd      # 데이터 적재
+        - data_reshape.qmd        # 데이터 변형
+        - data_transform.qmd      # 데이터 변환
+        - feature_selection.qmd   # 변수선택
     - part: "II. 가설검정"
       chapters:
         - hypothesis_test.qmd
