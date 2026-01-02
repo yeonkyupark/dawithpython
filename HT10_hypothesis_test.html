@@ -8,7 +8,7 @@
 
 <meta name="keywords" content="python, 파이썬, numpy, 넘파이, 넘피, pandas, 판다스, machine learning, 기계학습, 머신러닝, 회귀, 분류, 군집">
 
-<title>데이터 적재 – 데이터 분석 (파이썬)</title>
+<title>가설검정 – 데이터 분석 (파이썬)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,8 +31,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data_cleaning.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./ML10_regression.html" rel="next">
+<link href="./DP50_feature_selection.html" rel="prev">
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -123,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">I. 데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_load_save.html"><span class="chapter-title">데이터 적재</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./HT10_hypothesis_test.html">II. 가설검정</a></li><li class="breadcrumb-item"><a href="./HT10_hypothesis_test.html"><span class="chapter-title">가설검정</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -170,27 +135,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_load_save.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">데이터 적재</span></a>
+  <a href="./DP10_data_load_save.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 적재</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_cleaning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 정제</span></a>
+  <a href="./DP20_data_cleaning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 정제</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_reshape.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변형</span></a>
+  <a href="./DP30_data_reshape.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변형</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_transform.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변환</span></a>
+  <a href="./DP40_data_transform.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변환</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./feature_selection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">특징 추출</span></a>
+  <a href="./DP50_feature_selection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">특징 추출</span></a>
   </div>
 </li>
       </ul>
@@ -206,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypothesis_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">가설검정</span></a>
+  <a href="./HT10_hypothesis_test.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">가설검정</span></a>
   </div>
 </li>
       </ul>
@@ -222,17 +187,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">회귀분석</span></a>
+  <a href="./ML10_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">회귀분석</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">분류분석</span></a>
+  <a href="./ML20_classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">분류분석</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./clustering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">군집분석</span></a>
+  <a href="./ML30_clustering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">군집분석</span></a>
   </div>
 </li>
       </ul>
@@ -264,23 +229,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#데이터-적재" id="toc-데이터-적재" class="nav-link active" data-scroll-target="#데이터-적재">데이터 적재</a>
-  <ul>
-  <li><a href="#csv-파일-적재" id="toc-csv-파일-적재" class="nav-link" data-scroll-target="#csv-파일-적재">CSV 파일 적재</a></li>
-  </ul></li>
-  <li><a href="#데이터-저장" id="toc-데이터-저장" class="nav-link" data-scroll-target="#데이터-저장">데이터 저장</a>
-  <ul>
-  <li><a href="#csv-파일-저장" id="toc-csv-파일-저장" class="nav-link" data-scroll-target="#csv-파일-저장">CSV 파일 저장</a></li>
-  </ul></li>
+  <li><a href="#가설검정-개요" id="toc-가설검정-개요" class="nav-link active" data-scroll-target="#가설검정-개요">가설검정 개요</a></li>
+  <li><a href="#검정-조건" id="toc-검정-조건" class="nav-link" data-scroll-target="#검정-조건">검정 조건</a></li>
+  <li><a href="#주요-가설검정-방법" id="toc-주요-가설검정-방법" class="nav-link" data-scroll-target="#주요-가설검정-방법">주요 가설검정 방법</a></li>
+  <li><a href="#검정-결과-해석" id="toc-검정-결과-해석" class="nav-link" data-scroll-target="#검정-결과-해석">검정 결과 해석</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/data_load_save.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/HT10_hypothesis_test.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_load_save.html">I. 데이터 처리</a></li><li class="breadcrumb-item"><a href="./data_load_save.html"><span class="chapter-title">데이터 적재</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./HT10_hypothesis_test.html">II. 가설검정</a></li><li class="breadcrumb-item"><a href="./HT10_hypothesis_test.html"><span class="chapter-title">가설검정</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">데이터 적재</span></h1>
+<h1 class="title"><span class="chapter-title">가설검정</span></h1>
 </div>
 
 
@@ -303,135 +264,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.</p>
-<section id="데이터-적재" class="level2">
-<h2 class="anchored" data-anchor-id="데이터-적재">데이터 적재</h2>
-<section id="csv-파일-적재" class="level3">
-<h3 class="anchored" data-anchor-id="csv-파일-적재">CSV 파일 적재</h3>
-<p>데이터를 적재하는 가장 기본적인 방법은 <code>pandas.read_csv()</code> 함수를 사용하는 것이다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pandas.read_csv(filepath_or_buffer, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                sep<span class="op">=</span><span class="st">'구분자'</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                header<span class="op">=</span><span class="st">"컬럼명이 있는 행번호"</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                encoding<span class="op">=</span><span class="st">"인코딩종류"</span>, </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                na_values<span class="op">=</span>[<span class="st">"결측치로 인식할 값"</span>], </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                keep_default_na<span class="op">=</span>Fasle)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>keep_default_na</code> 값을 <code>True</code>로 설정하면 기본 결측치 목록(NaN, N/A, NA, NULL, None, 빈문자열)을 그대로 사용한다. 반면 <code>False</code>로 지정하면 <code>na_values</code> 목록만 결측치로 변환한다. <code>False</code> 지정 후 <code>na_values</code>를 설정하지 않으면 어떤 값도 자동으로 결측치로 변환되지 않는다.</p>
-<div id="a28a98bd" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/</span><span class="op">\</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">palmerpenguins/data/penguins.csv"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \
-0  Adelie  Torgersen            39.1           18.7              181.0   
-1  Adelie  Torgersen            39.5           17.4              186.0   
-2  Adelie  Torgersen            40.3           18.0              195.0   
-3  Adelie  Torgersen             NaN            NaN                NaN   
-4  Adelie  Torgersen            36.7           19.3              193.0   
-
-   body_mass_g     sex  year  
-0       3750.0    male  2007  
-1       3800.0  female  2007  
-2       3250.0  female  2007  
-3          NaN     NaN  2007  
-4       3450.0  female  2007  </code></pre>
-</div>
-</div>
-<p><code>header</code> 위치를 변경하면 다음과 같은 결과를 얻는다.</p>
-<div id="46d63816" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url, header <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Adelie  Torgersen  39.1  18.7    181    3750    male  2007
-0  Adelie  Torgersen  39.5  17.4  186.0  3800.0  female  2007
-1  Adelie  Torgersen  40.3  18.0  195.0  3250.0  female  2007
-2  Adelie  Torgersen   NaN   NaN    NaN     NaN     NaN  2007
-3  Adelie  Torgersen  36.7  19.3  193.0  3450.0  female  2007
-4  Adelie  Torgersen  39.3  20.6  190.0  3650.0    male  2007</code></pre>
-</div>
-</div>
-<p>원본 데이터에는 결측치를<code>NA</code>로 처리했다. <code>keep_default_na</code> 옵션 변경에 따라 결측치는 다르게 처리된다.</p>
-<div id="5b38a527" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> pd.read_csv(url, keep_default_na<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dataset.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  species     island bill_length_mm bill_depth_mm flipper_length_mm  \
-0  Adelie  Torgersen           39.1          18.7               181   
-1  Adelie  Torgersen           39.5          17.4               186   
-2  Adelie  Torgersen           40.3            18               195   
-3  Adelie  Torgersen             NA            NA                NA   
-4  Adelie  Torgersen           36.7          19.3               193   
-
-  body_mass_g     sex  year  
-0        3750    male  2007  
-1        3800  female  2007  
-2        3250  female  2007  
-3          NA      NA  2007  
-4        3450  female  2007  </code></pre>
-</div>
-</div>
+<section id="가설검정-개요" class="level2">
+<h2 class="anchored" data-anchor-id="가설검정-개요">가설검정 개요</h2>
+<ul>
+<li>귀무가설(H₀)과 대립가설(H₁)</li>
+<li>유의수준(α)과 p-value</li>
+</ul>
 </section>
+<section id="검정-조건" class="level2">
+<h2 class="anchored" data-anchor-id="검정-조건">검정 조건</h2>
+<ul>
+<li>독립성</li>
+<li>정규성</li>
+<li>등분산성</li>
+<li>선형성</li>
+</ul>
 </section>
-<section id="데이터-저장" class="level2">
-<h2 class="anchored" data-anchor-id="데이터-저장">데이터 저장</h2>
-<p>처리된 데이터는 상황이나 과제에 따라 다양한 형태로 저장할 수 있다. 우선 가장 일반적인 csv 형태로 저장하는 방법을 알아 본다.</p>
-<section id="csv-파일-저장" class="level3">
-<h3 class="anchored" data-anchor-id="csv-파일-저장">CSV 파일 저장</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>DataFrame.to_csv(<span class="st">'저장할 경로'</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                encoding<span class="op">=</span><span class="st">'인코딩지정'</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                index<span class="op">=</span><span class="st">'인덱스포함여부'</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                sep<span class="op">=</span><span class="st">'구분자'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>데이터 저장 시 어떤 인코딩을 적용했는지 명시적으로 지정한다. pandas 경우 <code>utf-8</code>을 기본 인코딩으로 사용한다. 반면 윈도우즈 엑셀은 <code>cp949</code>를 인코딩으로 사용한다. 이렇게 인코딩이 다른 경우 한글이 깨지는 현상이 발생한다.</p>
-<div id="a3aab788" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 한글이 포함된 DataFrame 생성</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"이름"</span>: [<span class="st">"홍길동"</span>, <span class="st">"김철수"</span>],</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"부서"</span>: [<span class="st">"생산관리"</span>, <span class="st">"스마트팩토리"</span>]</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># UTF-8로 저장 (BOM 없음)</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"korean_utf8.csv"</span>, index<span class="op">=</span><span class="va">False</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="a9c41ec7" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_broken <span class="op">=</span> pd.read_csv(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"korean_utf8.csv"</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    encoding<span class="op">=</span><span class="st">"cp949"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    encoding_errors<span class="op">=</span><span class="st">"replace"</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_broken)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    �씠由�         遺��꽌
-0  �솉湲몃룞     �깮�궛愿�由�
-1  源�泥좎닔  �뒪留덊듃�뙥�넗由�</code></pre>
-</div>
-</div>
-<p>위 예제는 <code>utf-8</code>로 저장하고 <code>cp949</code>로 읽었을 때 상황이다. 인코딩을 맞추게 되면 정상 출력된다.</p>
-<div id="e8815aa6" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_matched <span class="op">=</span> pd.read_csv(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"korean_utf8.csv"</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    encoding<span class="op">=</span><span class="st">"utf-8"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    encoding_errors<span class="op">=</span><span class="st">"replace"</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_matched)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    이름      부서
-0  홍길동    생산관리
-1  김철수  스마트팩토리</code></pre>
-</div>
-</div>
+<section id="주요-가설검정-방법" class="level2">
+<h2 class="anchored" data-anchor-id="주요-가설검정-방법">주요 가설검정 방법</h2>
+<ul>
+<li>t-검정</li>
+<li>카이제곱 검정</li>
+<li>F-검정(ANOVA)</li>
+</ul>
+</section>
+<section id="검정-결과-해석" class="level2">
+<h2 class="anchored" data-anchor-id="검정-결과-해석">검정 결과 해석</h2>
+<ul>
+<li>통계량의 의미</li>
+<li>p-value 해석</li>
+<li>통계적 유의성과 실질적 의미</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -843,13 +708,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="들어가기">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">들어가기</span>
+      <a href="./DP50_feature_selection.html" class="pagination-link" aria-label="특징 추출">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">특징 추출</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data_cleaning.html" class="pagination-link" aria-label="데이터 정제">
-        <span class="nav-page-text"><span class="chapter-title">데이터 정제</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ML10_regression.html" class="pagination-link" aria-label="회귀분석">
+        <span class="nav-page-text"><span class="chapter-title">회귀분석</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -861,7 +726,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/data_load_save.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/HT10_hypothesis_test.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Data Analytics with Python</p>
 </div>

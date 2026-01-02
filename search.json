@@ -10,8 +10,8 @@
     ]
   },
   {
-    "objectID": "data_load_save.html",
-    "href": "data_load_save.html",
+    "objectID": "DP10_data_load_save.html",
+    "href": "DP10_data_load_save.html",
     "title": "데이터 적재",
     "section": "",
     "text": "데이터 적재\n데이터 분석 첫 단계인 데이터 적재와 분석이 완료된 정보를 저장하는 방법을 알아 본다.",
@@ -21,8 +21,8 @@
     ]
   },
   {
-    "objectID": "data_load_save.html#데이터-적재",
-    "href": "data_load_save.html#데이터-적재",
+    "objectID": "DP10_data_load_save.html#데이터-적재",
+    "href": "DP10_data_load_save.html#데이터-적재",
     "title": "데이터 적재",
     "section": "",
     "text": "CSV 파일 적재\n데이터를 적재하는 가장 기본적인 방법은 pandas.read_csv() 함수를 사용하는 것이다.\npandas.read_csv(filepath_or_buffer, \n                sep='구분자', \n                header=\"컬럼명이 있는 행번호\", \n                encoding=\"인코딩종류\", \n                na_values=[\"결측치로 인식할 값\"], \n                keep_default_na=Fasle)\nkeep_default_na 값을 True로 설정하면 기본 결측치 목록(NaN, N/A, NA, NULL, None, 빈문자열)을 그대로 사용한다. 반면 False로 지정하면 na_values 목록만 결측치로 변환한다. False 지정 후 na_values를 설정하지 않으면 어떤 값도 자동으로 결측치로 변환되지 않는다.\n\nimport pandas as pd\n\nurl = \"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/\\\npalmerpenguins/data/penguins.csv\"\n\ndataset = pd.read_csv(url)\n\nprint(dataset.head())\n\n  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n0  Adelie  Torgersen            39.1           18.7              181.0   \n1  Adelie  Torgersen            39.5           17.4              186.0   \n2  Adelie  Torgersen            40.3           18.0              195.0   \n3  Adelie  Torgersen             NaN            NaN                NaN   \n4  Adelie  Torgersen            36.7           19.3              193.0   \n\n   body_mass_g     sex  year  \n0       3750.0    male  2007  \n1       3800.0  female  2007  \n2       3250.0  female  2007  \n3          NaN     NaN  2007  \n4       3450.0  female  2007  \n\n\nheader 위치를 변경하면 다음과 같은 결과를 얻는다.\n\ndataset = pd.read_csv(url, header = 1)\n\nprint(dataset.head())\n\n   Adelie  Torgersen  39.1  18.7    181    3750    male  2007\n0  Adelie  Torgersen  39.5  17.4  186.0  3800.0  female  2007\n1  Adelie  Torgersen  40.3  18.0  195.0  3250.0  female  2007\n2  Adelie  Torgersen   NaN   NaN    NaN     NaN     NaN  2007\n3  Adelie  Torgersen  36.7  19.3  193.0  3450.0  female  2007\n4  Adelie  Torgersen  39.3  20.6  190.0  3650.0    male  2007\n\n\n원본 데이터에는 결측치를NA로 처리했다. keep_default_na 옵션 변경에 따라 결측치는 다르게 처리된다.\n\ndataset = pd.read_csv(url, keep_default_na=False)\n\nprint(dataset.head())\n\n  species     island bill_length_mm bill_depth_mm flipper_length_mm  \\\n0  Adelie  Torgersen           39.1          18.7               181   \n1  Adelie  Torgersen           39.5          17.4               186   \n2  Adelie  Torgersen           40.3            18               195   \n3  Adelie  Torgersen             NA            NA                NA   \n4  Adelie  Torgersen           36.7          19.3               193   \n\n  body_mass_g     sex  year  \n0        3750    male  2007  \n1        3800  female  2007  \n2        3250  female  2007  \n3          NA      NA  2007  \n4        3450  female  2007",
@@ -32,8 +32,8 @@
     ]
   },
   {
-    "objectID": "data_load_save.html#데이터-저장",
-    "href": "data_load_save.html#데이터-저장",
+    "objectID": "DP10_data_load_save.html#데이터-저장",
+    "href": "DP10_data_load_save.html#데이터-저장",
     "title": "데이터 적재",
     "section": "데이터 저장",
     "text": "데이터 저장\n처리된 데이터는 상황이나 과제에 따라 다양한 형태로 저장할 수 있다. 우선 가장 일반적인 csv 형태로 저장하는 방법을 알아 본다.\n\nCSV 파일 저장\nDataFrame.to_csv('저장할 경로',\n                encoding='인코딩지정',\n                index='인덱스포함여부',\n                sep='구분자')\n데이터 저장 시 어떤 인코딩을 적용했는지 명시적으로 지정한다. pandas 경우 utf-8을 기본 인코딩으로 사용한다. 반면 윈도우즈 엑셀은 cp949를 인코딩으로 사용한다. 이렇게 인코딩이 다른 경우 한글이 깨지는 현상이 발생한다.\n\nimport pandas as pd\n\n# 한글이 포함된 DataFrame 생성\ndf = pd.DataFrame({\n    \"이름\": [\"홍길동\", \"김철수\"],\n    \"부서\": [\"생산관리\", \"스마트팩토리\"]\n})\n\n# UTF-8로 저장 (BOM 없음)\ndf.to_csv(\"korean_utf8.csv\", index=False, encoding=\"utf-8\")\n\n\ndf_broken = pd.read_csv(\n    \"korean_utf8.csv\",\n    encoding=\"cp949\",\n    encoding_errors=\"replace\"\n)\n\nprint(df_broken)\n\n    �씠由�         遺��꽌\n0  �솉湲몃룞     �깮�궛愿�由�\n1  源�泥좎닔  �뒪留덊듃�뙥�넗由�\n\n\n위 예제는 utf-8로 저장하고 cp949로 읽었을 때 상황이다. 인코딩을 맞추게 되면 정상 출력된다.\n\ndf_matched = pd.read_csv(\n    \"korean_utf8.csv\",\n    encoding=\"utf-8\",\n    encoding_errors=\"replace\"\n)\n\nprint(df_matched)\n\n    이름      부서\n0  홍길동    생산관리\n1  김철수  스마트팩토리",
@@ -43,8 +43,8 @@
     ]
   },
   {
-    "objectID": "data_cleaning.html",
-    "href": "data_cleaning.html",
+    "objectID": "DP20_data_cleaning.html",
+    "href": "DP20_data_cleaning.html",
     "title": "데이터 정제",
     "section": "",
     "text": "결측치 처리\n결측치는 누락된 값을 의미한다. 즉 데이터를 정상적으로 입력하지 못한 경우이다.\n이런 결측치는 발생 원인과 특성에 따라 크게 3가지로 구분된다.\n이런 결측치는 상황에 따라 삭제, 대체, 모델링하여 처리한다.",
@@ -54,8 +54,8 @@
     ]
   },
   {
-    "objectID": "data_cleaning.html#결측치-처리",
-    "href": "data_cleaning.html#결측치-처리",
+    "objectID": "DP20_data_cleaning.html#결측치-처리",
+    "href": "DP20_data_cleaning.html#결측치-처리",
     "title": "데이터 정제",
     "section": "",
     "text": "완전 무작위 결측 (MCAR, Missing Completely At Random)\n\n결측 발생이 어떤 변수와도 관련이 없는 경우\n예시: 설문 데이터 입력 중 시스템 오류로 임의의 몇 행이 통째로 누락됨, 사람이 데이터 입력 시 실수로 데이터를 누락하는 경우\n\n무작위 결측 (MAR, Missing At Random)\n\n결측 여부가 다른 관측된 변수와는 관련 있지만, 자기 자신 값과는 직접적 관련이 없는 경우\n예시: 고연령층 응답자일수록 소득 항목을 응답하지 않는 경우 (연령은 존재, 소득만 결측), 여성질환 관련 검진 항목을 남성에 대해서는 미기입하는 경우\n\n비무작위 결측 (MNAR, Missing Not At Random)\n\n결측 여부가 해당 변수의 실제 값과 직접적으로 관련된 경우\n예시: 소득이 매우 높은 사람이 소득을 의도적으로 응답하지 않음, 우울감이 높을수록 정신건강 관련 설문을 건너뛰는 경우\n\n\n\n\n삭제\npalmerpenguins 데이터셋을 이용하여 결측치를 삭제하는 방법을 알아 본다\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins\n\ndf = load_penguins()\ndf.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007\n\n\n\n\n\n\n\n컬럼별 결측치 개수를 확인한다.\n\ndf.isna().sum()\n\nspecies               0\nisland                0\nbill_length_mm        2\nbill_depth_mm         2\nflipper_length_mm     2\nbody_mass_g           2\nsex                  11\nyear                  0\ndtype: int64\n\n\n\ndf.loc[df.isna().any(axis=1), :].reset_index()\n\n\n\n\n\n\n\n\nindex\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n\n\n1\n8\nAdelie\nTorgersen\n34.1\n18.1\n193.0\n3475.0\nNaN\n2007\n\n\n2\n9\nAdelie\nTorgersen\n42.0\n20.2\n190.0\n4250.0\nNaN\n2007\n\n\n3\n10\nAdelie\nTorgersen\n37.8\n17.1\n186.0\n3300.0\nNaN\n2007\n\n\n4\n11\nAdelie\nTorgersen\n37.8\n17.3\n180.0\n3700.0\nNaN\n2007\n\n\n5\n47\nAdelie\nDream\n37.5\n18.9\n179.0\n2975.0\nNaN\n2007\n\n\n6\n178\nGentoo\nBiscoe\n44.5\n14.3\n216.0\n4100.0\nNaN\n2007\n\n\n7\n218\nGentoo\nBiscoe\n46.2\n14.4\n214.0\n4650.0\nNaN\n2008\n\n\n8\n256\nGentoo\nBiscoe\n47.3\n13.8\n216.0\n4725.0\nNaN\n2009\n\n\n9\n268\nGentoo\nBiscoe\n44.5\n15.7\n217.0\n4875.0\nNaN\n2009\n\n\n10\n271\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n2009\n\n\n\n\n\n\n\n결측치가 하나라도 있는 행은 삭제한다.\n\ndf_dropna = df.dropna()\ndf_dropna.isna().sum()\n\nspecies              0\nisland               0\nbill_length_mm       0\nbill_depth_mm        0\nflipper_length_mm    0\nbody_mass_g          0\nsex                  0\nyear                 0\ndtype: int64\n\n\n\n\n대체\n\n수치형\n컬럼이 수치형인 경우 평균값이나 중앙값 또는 특정값으로 대체한다.\n\ndf_mean = df.copy()\n\nnum_cols = [\"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\"]\n\nna_index = df.loc[df.loc[:, num_cols].isna().any(axis=1), num_cols].index \nprint(df_mean.loc[na_index, num_cols])\n\nlist_means = []\nfor col in num_cols:\n    list_means.append(df_mean[col].mean())\n    df_mean[col] = df_mean[col].fillna(df_mean[col].mean())\n\nprint(df_mean.loc[na_index, num_cols])\nprint(pd.Series(list_means, index=num_cols).reset_index())\n\n     bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g\n3               NaN            NaN                NaN          NaN\n271             NaN            NaN                NaN          NaN\n     bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g\n3          43.92193       17.15117         200.915205  4201.754386\n271        43.92193       17.15117         200.915205  4201.754386\n               index            0\n0     bill_length_mm    43.921930\n1      bill_depth_mm    17.151170\n2  flipper_length_mm   200.915205\n3        body_mass_g  4201.754386\n\n\n각 컬럼이 범주로 분류된다면 다음과 같이 처리할 수 있다.\n\ndf_mean = df.copy()\n\nnum_cols = [\"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\"]\n\nna_index = df.loc[df.loc[:, num_cols].isna().any(axis=1), num_cols].index \nprint(df_mean.loc[na_index, ['species'] + num_cols])\n\nfor col in num_cols:\n   df_mean[col] = df_mean.groupby(['species'])[col].transform(lambda x: x.mean())\n\nprint(df_mean.loc[na_index, ['species'] + num_cols])\n\n    species  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g\n3    Adelie             NaN            NaN                NaN          NaN\n271  Gentoo             NaN            NaN                NaN          NaN\n    species  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g\n3    Adelie       38.791391      18.346358         189.953642  3700.662252\n271  Gentoo       47.504878      14.982114         217.186992  5076.016260\n\n\n\n\n범주형\n컬럼이 범주형인 경우 최빈값이나 특정 범주를 만들어 대체한다.\n\nimport numpy as np\n\ndf_mode = df.copy()\nnum_cols = [\"sex\"]\ndf_mode.loc[277, 'sex'] = np.nan \n\nna_index = df_mode.loc[df_mode.loc[:, num_cols].isna().any(axis=1), num_cols].index \nprint(df_mode.loc[na_index, ['species']+num_cols])\n\n       species  sex\n3       Adelie  NaN\n8       Adelie  NaN\n9       Adelie  NaN\n10      Adelie  NaN\n11      Adelie  NaN\n47      Adelie  NaN\n178     Gentoo  NaN\n218     Gentoo  NaN\n256     Gentoo  NaN\n268     Gentoo  NaN\n271     Gentoo  NaN\n277  Chinstrap  NaN\n\n\n\ndf_mode[df_mode['species']=='Chinstrap']['sex'].value_counts()\n\nsex\nfemale    34\nmale      33\nName: count, dtype: int64\n\n\n\ndf_mode[df_mode['species']=='Chinstrap']['sex'].mode()\n\n0    female\nName: sex, dtype: object\n\n\n\nlist_modes = []\nfor col in num_cols:\n    list_modes.append(df_mode[col].mode()[0])\n    df_mode[col] = df_mode[col].fillna(df_mode[col].mode()[0])\n    \nprint(df_mode.loc[na_index, ['species']+num_cols])\nprint(pd.Series(list_modes, index=num_cols).reset_index())\n\n       species   sex\n3       Adelie  male\n8       Adelie  male\n9       Adelie  male\n10      Adelie  male\n11      Adelie  male\n47      Adelie  male\n178     Gentoo  male\n218     Gentoo  male\n256     Gentoo  male\n268     Gentoo  male\n271     Gentoo  male\n277  Chinstrap  male\n  index     0\n0   sex  male\n\n\n위 예제는 전체 컬럼 기준으로 최빈값을 계산 후 결측치를 대체한다. 아래 예제는 범주별 최빈값을 결측치에 대체하는 코드이다.\n\nlist_modes = []\nfor col in num_cols:\n    list_modes.append(df_mode[col].mode()[0])\n    df_mode[col] = df_mode.groupby(['species'])[col].transform(lambda x: x.mode()[0])\n    \nprint(df_mode.loc[na_index, ['species']+num_cols])\n\n       species     sex\n3       Adelie    male\n8       Adelie    male\n9       Adelie    male\n10      Adelie    male\n11      Adelie    male\n47      Adelie    male\n178     Gentoo    male\n218     Gentoo    male\n256     Gentoo    male\n268     Gentoo    male\n271     Gentoo    male\n277  Chinstrap  female\n\n\n\n\n\n모델링\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins\nfrom sklearn.experimental import enable_iterative_imputer\nfrom sklearn.impute import IterativeImputer\nfrom sklearn.ensemble import RandomForestRegressor\n\n# 1. 데이터셋 로드\npenguins = load_penguins()\n\n# 2. 수치형 데이터 선택\nnumeric_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']\ndf_numeric = penguins[numeric_cols]\n\n# 대체 전 결측치 확인\nprint(\"대체 전 결측치 상황:\")\nprint(df_numeric.isnull().sum())\nna_index = df_numeric.loc[df_numeric.isna().any(axis=1), :].index\nprint(df_numeric.loc[na_index, :])\n\n\n# 3. IterativeImputer 설정\nimputer = IterativeImputer(\n    estimator=RandomForestRegressor(n_estimators=10, random_state=42),\n    max_iter=10,\n    random_state=42\n)\n\n# 4. 결측치 대체 수행\ndf_imputed = imputer.fit_transform(df_numeric)\n\n# 5. 결과를 다시 데이터프레임으로 변환\ndf_final = pd.DataFrame(df_imputed, columns=numeric_cols)\n\nprint(\"\\n대체 후 결측치 상황:\")\nprint(df_final.isnull().sum())\nprint(df_final.loc[na_index, :])\n\n# 원본 데이터와 합치기 (필요한 경우)\npenguins[numeric_cols] = df_final\n\n대체 전 결측치 상황:\nbill_length_mm       2\nbill_depth_mm        2\nflipper_length_mm    2\nbody_mass_g          2\ndtype: int64\n     bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g\n3               NaN            NaN                NaN          NaN\n271             NaN            NaN                NaN          NaN\n\n대체 후 결측치 상황:\nbill_length_mm       0\nbill_depth_mm        0\nflipper_length_mm    0\nbody_mass_g          0\ndtype: int64\n     bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g\n3             51.89          19.23              205.9       4010.0\n271           51.89          19.23              205.9       4010.0\n\n\n다음은 범주별 모델링을 적용한 예제이다.\n\nimport pandas as pd\nfrom sklearn.experimental import enable_iterative_imputer\nfrom sklearn.impute import IterativeImputer\nfrom sklearn.ensemble import RandomForestRegressor\n\n# 1. 데이터셋 로드\npenguins = load_penguins()\n\n# 대체에 사용할 수치형 컬럼 정의\nnumeric_cols = ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']\n\n# 2. 그룹별 대체를 수행할 함수 정의\ndef impute_by_group(group):\n    # 각 그룹 내에서 수치형 데이터만 추출\n    group_numeric = group[numeric_cols]\n    \n    # 모델 기반 대치기 설정 (RandomForest 사용)\n    imputer = IterativeImputer(\n        estimator=RandomForestRegressor(n_estimators=10, random_state=42),\n        max_iter=10,\n        random_state=42\n    )\n    \n    # 데이터가 모두 결측치인 경우 등을 대비해 예외 처리 후 대치\n    if group_numeric.isnull().all().all():\n        return group\n    \n    imputed_values = imputer.fit_transform(group_numeric)\n    group[numeric_cols] = imputed_values\n    return group\n\n# 3. species 컬럼을 기준으로 그룹화하여 함수 적용\n# 성별(sex)에 결측치가 있는 경우도 있으므로 전체 데이터프레임 유지\npenguins_imputed = penguins.groupby('species', group_keys=False).apply(impute_by_group)\n\n# 4. 결과 확인\nprint(\"종별 대체 후 결측치 현황:\")\nprint(penguins_imputed[numeric_cols].isnull().sum())\nna_index = df_numeric.loc[df_numeric.isna().any(axis=1), :].index\nprint(penguins_imputed.loc[na_index, :])\n\n# 특정 종의 결과 예시 출력 (Adelie)\nprint(\"\\nAdelie 종의 요약 통계량 (대체 후):\")\nprint(penguins_imputed[penguins_imputed['species'] == 'Adelie'][numeric_cols].describe())\n\n종별 대체 후 결측치 현황:\nbill_length_mm       0\nbill_depth_mm        0\nflipper_length_mm    0\nbody_mass_g          0\ndtype: int64\n    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \\\n3    Adelie  Torgersen           37.25          18.06              184.5   \n271  Gentoo     Biscoe           50.91          15.84              225.0   \n\n     body_mass_g  sex  year  \n3         3715.0  NaN  2007  \n271       5330.0  NaN  2009  \n\nAdelie 종의 요약 통계량 (대체 후):\n       bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g\ncount      152.000000     152.000000         152.000000   152.000000\nmean        38.781250      18.344474         189.917763  3700.756579\nstd          2.657513       1.212837           6.532761   457.046652\nmin         32.100000      15.500000         172.000000  2850.000000\n25%         36.775000      17.500000         185.750000  3350.000000\n50%         38.800000      18.400000         190.000000  3700.000000\n75%         40.725000      19.000000         195.000000  4000.000000\nmax         46.000000      21.500000         210.000000  4775.000000",
@@ -65,8 +65,8 @@
     ]
   },
   {
-    "objectID": "data_cleaning.html#이상치-처리",
-    "href": "data_cleaning.html#이상치-처리",
+    "objectID": "DP20_data_cleaning.html#이상치-처리",
+    "href": "DP20_data_cleaning.html#이상치-처리",
     "title": "데이터 정제",
     "section": "이상치 처리",
     "text": "이상치 처리\n이상치는 데이터 패턴이나 범위를 크게 벗어난 값을 의미한다. 이러한 이상치는 다음과 같은 방법으로 탐지가 가능하다. 탐지된 이상치는 상황 및 모델 특성에 따라 삭제, 대체, 변환 등으로 처리한다.\n\nTukey Fence: 통계 기반 IQR을 이용하여 탐지\nLocal Outlier Factor: 주변 이웃 밀도 기반 이상 탐지\nIsolation Forest: 결정 트리 기반 이상 탐지\n시계열 데이터: rolling 함수, decomposition\n\n\nTukey Fence\n\n\nLocal Outlider Factor\n\n\nIsolation Forest",
@@ -76,8 +76,8 @@
     ]
   },
   {
-    "objectID": "data_reshape.html",
-    "href": "data_reshape.html",
+    "objectID": "DP30_data_reshape.html",
+    "href": "DP30_data_reshape.html",
     "title": "데이터 변형",
     "section": "",
     "text": "자료형 처리",
@@ -87,8 +87,8 @@
     ]
   },
   {
-    "objectID": "data_reshape.html#데이터-구조-변형",
-    "href": "data_reshape.html#데이터-구조-변형",
+    "objectID": "DP30_data_reshape.html#데이터-구조-변형",
+    "href": "DP30_data_reshape.html#데이터-구조-변형",
     "title": "데이터 변형",
     "section": "데이터 구조 변형",
     "text": "데이터 구조 변형",
@@ -98,8 +98,8 @@
     ]
   },
   {
-    "objectID": "data_reshape.html#변주형-데이터-처리",
-    "href": "data_reshape.html#변주형-데이터-처리",
+    "objectID": "DP30_data_reshape.html#변주형-데이터-처리",
+    "href": "DP30_data_reshape.html#변주형-데이터-처리",
     "title": "데이터 변형",
     "section": "변주형 데이터 처리",
     "text": "변주형 데이터 처리",
@@ -109,8 +109,8 @@
     ]
   },
   {
-    "objectID": "data_transform.html",
-    "href": "data_transform.html",
+    "objectID": "DP40_data_transform.html",
+    "href": "DP40_data_transform.html",
     "title": "데이터 변환",
     "section": "",
     "text": "정규화와 표준화",
@@ -120,8 +120,8 @@
     ]
   },
   {
-    "objectID": "data_transform.html#분포-변환",
-    "href": "data_transform.html#분포-변환",
+    "objectID": "DP40_data_transform.html#분포-변환",
+    "href": "DP40_data_transform.html#분포-변환",
     "title": "데이터 변환",
     "section": "분포 변환",
     "text": "분포 변환\n\n로그/Box-Cox/Yeo-Jonhson 변환",
@@ -131,8 +131,8 @@
     ]
   },
   {
-    "objectID": "feature_selection.html",
-    "href": "feature_selection.html",
+    "objectID": "DP50_feature_selection.html",
+    "href": "DP50_feature_selection.html",
     "title": "특징 추출",
     "section": "",
     "text": "변수 선택",
@@ -142,8 +142,8 @@
     ]
   },
   {
-    "objectID": "feature_selection.html#변수-선택",
-    "href": "feature_selection.html#변수-선택",
+    "objectID": "DP50_feature_selection.html#변수-선택",
+    "href": "DP50_feature_selection.html#변수-선택",
     "title": "특징 추출",
     "section": "",
     "text": "subset 변수 선택\nstep-wise 변수 선택",
@@ -153,8 +153,8 @@
     ]
   },
   {
-    "objectID": "feature_selection.html#차원-축소",
-    "href": "feature_selection.html#차원-축소",
+    "objectID": "DP50_feature_selection.html#차원-축소",
+    "href": "DP50_feature_selection.html#차원-축소",
     "title": "특징 추출",
     "section": "차원 축소",
     "text": "차원 축소\n\nPCA, FA, t-SNE, UMAP",
@@ -164,8 +164,8 @@
     ]
   },
   {
-    "objectID": "hypothesis_test.html",
-    "href": "hypothesis_test.html",
+    "objectID": "HT10_hypothesis_test.html",
+    "href": "HT10_hypothesis_test.html",
     "title": "가설검정",
     "section": "",
     "text": "가설검정 개요",
@@ -175,8 +175,8 @@
     ]
   },
   {
-    "objectID": "hypothesis_test.html#가설검정-개요",
-    "href": "hypothesis_test.html#가설검정-개요",
+    "objectID": "HT10_hypothesis_test.html#가설검정-개요",
+    "href": "HT10_hypothesis_test.html#가설검정-개요",
     "title": "가설검정",
     "section": "",
     "text": "귀무가설(H₀)과 대립가설(H₁)\n유의수준(α)과 p-value",
@@ -186,8 +186,8 @@
     ]
   },
   {
-    "objectID": "hypothesis_test.html#검정-조건",
-    "href": "hypothesis_test.html#검정-조건",
+    "objectID": "HT10_hypothesis_test.html#검정-조건",
+    "href": "HT10_hypothesis_test.html#검정-조건",
     "title": "가설검정",
     "section": "검정 조건",
     "text": "검정 조건\n\n독립성\n정규성\n등분산성\n선형성",
@@ -197,8 +197,8 @@
     ]
   },
   {
-    "objectID": "hypothesis_test.html#주요-가설검정-방법",
-    "href": "hypothesis_test.html#주요-가설검정-방법",
+    "objectID": "HT10_hypothesis_test.html#주요-가설검정-방법",
+    "href": "HT10_hypothesis_test.html#주요-가설검정-방법",
     "title": "가설검정",
     "section": "주요 가설검정 방법",
     "text": "주요 가설검정 방법\n\nt-검정\n카이제곱 검정\nF-검정(ANOVA)",
@@ -208,8 +208,8 @@
     ]
   },
   {
-    "objectID": "hypothesis_test.html#검정-결과-해석",
-    "href": "hypothesis_test.html#검정-결과-해석",
+    "objectID": "HT10_hypothesis_test.html#검정-결과-해석",
+    "href": "HT10_hypothesis_test.html#검정-결과-해석",
     "title": "가설검정",
     "section": "검정 결과 해석",
     "text": "검정 결과 해석\n\n통계량의 의미\np-value 해석\n통계적 유의성과 실질적 의미",
@@ -219,8 +219,8 @@
     ]
   },
   {
-    "objectID": "regression.html",
-    "href": "regression.html",
+    "objectID": "ML10_regression.html",
+    "href": "ML10_regression.html",
     "title": "회귀분석",
     "section": "",
     "text": "선형회귀분석",
@@ -230,8 +230,8 @@
     ]
   },
   {
-    "objectID": "regression.html#다항회귀분석",
-    "href": "regression.html#다항회귀분석",
+    "objectID": "ML10_regression.html#다항회귀분석",
+    "href": "ML10_regression.html#다항회귀분석",
     "title": "회귀분석",
     "section": "다항회귀분석",
     "text": "다항회귀분석",
@@ -241,8 +241,8 @@
     ]
   },
   {
-    "objectID": "regression.html#정규화-회귀분석",
-    "href": "regression.html#정규화-회귀분석",
+    "objectID": "ML10_regression.html#정규화-회귀분석",
+    "href": "ML10_regression.html#정규화-회귀분석",
     "title": "회귀분석",
     "section": "정규화 회귀분석",
     "text": "정규화 회귀분석\n\nRidge 회귀\n\n\nLasso 회귀",
@@ -252,8 +252,8 @@
     ]
   },
   {
-    "objectID": "classification.html",
-    "href": "classification.html",
+    "objectID": "ML20_classification.html",
+    "href": "ML20_classification.html",
     "title": "분류분석",
     "section": "",
     "text": "로지스틱 회귀",
@@ -263,8 +263,8 @@
     ]
   },
   {
-    "objectID": "classification.html#knn",
-    "href": "classification.html#knn",
+    "objectID": "ML20_classification.html#knn",
+    "href": "ML20_classification.html#knn",
     "title": "분류분석",
     "section": "KNN",
     "text": "KNN",
@@ -274,8 +274,8 @@
     ]
   },
   {
-    "objectID": "classification.html#결정트리",
-    "href": "classification.html#결정트리",
+    "objectID": "ML20_classification.html#결정트리",
+    "href": "ML20_classification.html#결정트리",
     "title": "분류분석",
     "section": "결정트리",
     "text": "결정트리",
@@ -285,8 +285,8 @@
     ]
   },
   {
-    "objectID": "classification.html#svm",
-    "href": "classification.html#svm",
+    "objectID": "ML20_classification.html#svm",
+    "href": "ML20_classification.html#svm",
     "title": "분류분석",
     "section": "SVM",
     "text": "SVM",
@@ -296,8 +296,8 @@
     ]
   },
   {
-    "objectID": "classification.html#신경망",
-    "href": "classification.html#신경망",
+    "objectID": "ML20_classification.html#신경망",
+    "href": "ML20_classification.html#신경망",
     "title": "분류분석",
     "section": "신경망",
     "text": "신경망",
@@ -307,8 +307,8 @@
     ]
   },
   {
-    "objectID": "clustering.html",
-    "href": "clustering.html",
+    "objectID": "ML30_clustering.html",
+    "href": "ML30_clustering.html",
     "title": "군집분석",
     "section": "",
     "text": "K-Means",
@@ -318,8 +318,8 @@
     ]
   },
   {
-    "objectID": "clustering.html#계층적-군집",
-    "href": "clustering.html#계층적-군집",
+    "objectID": "ML30_clustering.html#계층적-군집",
+    "href": "ML30_clustering.html#계층적-군집",
     "title": "군집분석",
     "section": "계층적 군집",
     "text": "계층적 군집",
@@ -329,8 +329,8 @@
     ]
   },
   {
-    "objectID": "clustering.html#dbscan",
-    "href": "clustering.html#dbscan",
+    "objectID": "ML30_clustering.html#dbscan",
+    "href": "ML30_clustering.html#dbscan",
     "title": "군집분석",
     "section": "DBSCAN",
     "text": "DBSCAN",

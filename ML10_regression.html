@@ -8,7 +8,7 @@
 
 <meta name="keywords" content="python, 파이썬, numpy, 넘파이, 넘피, pandas, 판다스, machine learning, 기계학습, 머신러닝, 회귀, 분류, 군집">
 
-<title>분류분석 – 데이터 분석 (파이썬)</title>
+<title>회귀분석 – 데이터 분석 (파이썬)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./clustering.html" rel="next">
-<link href="./regression.html" rel="prev">
+<link href="./ML20_classification.html" rel="next">
+<link href="./HT10_hypothesis_test.html" rel="prev">
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression.html">III. 기계학습</a></li><li class="breadcrumb-item"><a href="./classification.html"><span class="chapter-title">분류분석</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ML10_regression.html">III. 기계학습</a></li><li class="breadcrumb-item"><a href="./ML10_regression.html"><span class="chapter-title">회귀분석</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -135,27 +135,27 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_load_save.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 적재</span></a>
+  <a href="./DP10_data_load_save.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 적재</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_cleaning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 정제</span></a>
+  <a href="./DP20_data_cleaning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 정제</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_reshape.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변형</span></a>
+  <a href="./DP30_data_reshape.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변형</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_transform.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변환</span></a>
+  <a href="./DP40_data_transform.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 변환</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./feature_selection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">특징 추출</span></a>
+  <a href="./DP50_feature_selection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">특징 추출</span></a>
   </div>
 </li>
       </ul>
@@ -171,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypothesis_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">가설검정</span></a>
+  <a href="./HT10_hypothesis_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">가설검정</span></a>
   </div>
 </li>
       </ul>
@@ -187,17 +187,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">회귀분석</span></a>
+  <a href="./ML10_regression.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">회귀분석</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./classification.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">분류분석</span></a>
+  <a href="./ML20_classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">분류분석</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./clustering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">군집분석</span></a>
+  <a href="./ML30_clustering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">군집분석</span></a>
   </div>
 </li>
       </ul>
@@ -229,20 +229,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#로지스틱-회귀" id="toc-로지스틱-회귀" class="nav-link active" data-scroll-target="#로지스틱-회귀">로지스틱 회귀</a></li>
-  <li><a href="#knn" id="toc-knn" class="nav-link" data-scroll-target="#knn">KNN</a></li>
-  <li><a href="#결정트리" id="toc-결정트리" class="nav-link" data-scroll-target="#결정트리">결정트리</a></li>
-  <li><a href="#svm" id="toc-svm" class="nav-link" data-scroll-target="#svm">SVM</a></li>
-  <li><a href="#신경망" id="toc-신경망" class="nav-link" data-scroll-target="#신경망">신경망</a></li>
+  <li><a href="#선형회귀분석" id="toc-선형회귀분석" class="nav-link active" data-scroll-target="#선형회귀분석">선형회귀분석</a></li>
+  <li><a href="#다항회귀분석" id="toc-다항회귀분석" class="nav-link" data-scroll-target="#다항회귀분석">다항회귀분석</a></li>
+  <li><a href="#정규화-회귀분석" id="toc-정규화-회귀분석" class="nav-link" data-scroll-target="#정규화-회귀분석">정규화 회귀분석</a>
+  <ul>
+  <li><a href="#ridge-회귀" id="toc-ridge-회귀" class="nav-link" data-scroll-target="#ridge-회귀">Ridge 회귀</a></li>
+  <li><a href="#lasso-회귀" id="toc-lasso-회귀" class="nav-link" data-scroll-target="#lasso-회귀">Lasso 회귀</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/classification.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/ML10_regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regression.html">III. 기계학습</a></li><li class="breadcrumb-item"><a href="./classification.html"><span class="chapter-title">분류분석</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ML10_regression.html">III. 기계학습</a></li><li class="breadcrumb-item"><a href="./ML10_regression.html"><span class="chapter-title">회귀분석</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">분류분석</span></h1>
+<h1 class="title"><span class="chapter-title">회귀분석</span></h1>
 </div>
 
 
@@ -265,22 +267,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="로지스틱-회귀" class="level2">
-<h2 class="anchored" data-anchor-id="로지스틱-회귀">로지스틱 회귀</h2>
+<section id="선형회귀분석" class="level2">
+<h2 class="anchored" data-anchor-id="선형회귀분석">선형회귀분석</h2>
 </section>
-<section id="knn" class="level2">
-<h2 class="anchored" data-anchor-id="knn">KNN</h2>
+<section id="다항회귀분석" class="level2">
+<h2 class="anchored" data-anchor-id="다항회귀분석">다항회귀분석</h2>
 </section>
-<section id="결정트리" class="level2">
-<h2 class="anchored" data-anchor-id="결정트리">결정트리</h2>
+<section id="정규화-회귀분석" class="level2">
+<h2 class="anchored" data-anchor-id="정규화-회귀분석">정규화 회귀분석</h2>
+<section id="ridge-회귀" class="level3">
+<h3 class="anchored" data-anchor-id="ridge-회귀">Ridge 회귀</h3>
 </section>
-<section id="svm" class="level2">
-<h2 class="anchored" data-anchor-id="svm">SVM</h2>
-</section>
-<section id="신경망" class="level2">
-<h2 class="anchored" data-anchor-id="신경망">신경망</h2>
+<section id="lasso-회귀" class="level3">
+<h3 class="anchored" data-anchor-id="lasso-회귀">Lasso 회귀</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -692,13 +694,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./regression.html" class="pagination-link" aria-label="회귀분석">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">회귀분석</span></span>
+      <a href="./HT10_hypothesis_test.html" class="pagination-link" aria-label="가설검정">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">가설검정</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./clustering.html" class="pagination-link" aria-label="군집분석">
-        <span class="nav-page-text"><span class="chapter-title">군집분석</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ML20_classification.html" class="pagination-link" aria-label="분류분석">
+        <span class="nav-page-text"><span class="chapter-title">분류분석</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -710,7 +712,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/classification.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/ML10_regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Data Analytics with Python</p>
 </div>
