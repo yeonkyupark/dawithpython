@@ -21,10 +21,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -74,6 +109,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
 <meta name="google-adsense-account" content="pub-8759553852956796">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -230,8 +268,20 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#자료형-처리" id="toc-자료형-처리" class="nav-link active" data-scroll-target="#자료형-처리">자료형 처리</a></li>
-  <li><a href="#데이터-구조-변형" id="toc-데이터-구조-변형" class="nav-link" data-scroll-target="#데이터-구조-변형">데이터 구조 변형</a></li>
-  <li><a href="#변주형-데이터-처리" id="toc-변주형-데이터-처리" class="nav-link" data-scroll-target="#변주형-데이터-처리">변주형 데이터 처리</a></li>
+  <li><a href="#데이터-구조-변형" id="toc-데이터-구조-변형" class="nav-link" data-scroll-target="#데이터-구조-변형">데이터 구조 변형</a>
+  <ul>
+  <li><a href="#특정-컬럼-추출-및-파생-변수-생성" id="toc-특정-컬럼-추출-및-파생-변수-생성" class="nav-link" data-scroll-target="#특정-컬럼-추출-및-파생-변수-생성">특정 컬럼 추출 및 파생 변수 생성</a></li>
+  <li><a href="#자료-구조-변경" id="toc-자료-구조-변경" class="nav-link" data-scroll-target="#자료-구조-변경">자료 구조 변경</a>
+  <ul class="collapse">
+  <li><a href="#long-format을-wide-format으로-변경" id="toc-long-format을-wide-format으로-변경" class="nav-link" data-scroll-target="#long-format을-wide-format으로-변경">Long format을 Wide format으로 변경</a></li>
+  <li><a href="#wide-format을-long-format으로-변경" id="toc-wide-format을-long-format으로-변경" class="nav-link" data-scroll-target="#wide-format을-long-format으로-변경">Wide format을 Long format으로 변경</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#범주형-데이터-처리" id="toc-범주형-데이터-처리" class="nav-link" data-scroll-target="#범주형-데이터-처리">범주형 데이터 처리</a>
+  <ul>
+  <li><a href="#더미-변수-생성" id="toc-더미-변수-생성" class="nav-link" data-scroll-target="#더미-변수-생성">더미 변수 생성</a></li>
+  <li><a href="#원핫-인코딩" id="toc-원핫-인코딩" class="nav-link" data-scroll-target="#원핫-인코딩">원핫 인코딩</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/yeonkyupark/dawithpython/edit/main/DP30_data_reshape.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -263,16 +313,631 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>데이터 변형은 적재한 데이터가 분석에 용이한 형태로 자료형이나 구조를 바꾸는 방법이다. wide format을 long format으로 변형하거나 범주형 변수를 원핫 인코딩을 통해 수치형 변수로 바꾸는 등이 이에 해당한다.</p>
+<p>실습 코드는 Palmer Penguins 데이터셋을 이용한다.</p>
+<div id="6073cb53" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> load_penguins()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">island</th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.1</td>
+<td>18.7</td>
+<td>181.0</td>
+<td>3750.0</td>
+<td>male</td>
+<td>2007</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.5</td>
+<td>17.4</td>
+<td>186.0</td>
+<td>3800.0</td>
+<td>female</td>
+<td>2007</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>40.3</td>
+<td>18.0</td>
+<td>195.0</td>
+<td>3250.0</td>
+<td>female</td>
+<td>2007</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2007</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>36.7</td>
+<td>19.3</td>
+<td>193.0</td>
+<td>3450.0</td>
+<td>female</td>
+<td>2007</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 <section id="자료형-처리" class="level2">
 <h2 class="anchored" data-anchor-id="자료형-처리">자료형 처리</h2>
+<div id="c9b053bf" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>species               object
+island                object
+bill_length_mm       float64
+bill_depth_mm        float64
+flipper_length_mm    float64
+body_mass_g          float64
+sex                   object
+year                   int64
+dtype: object</code></pre>
+</div>
+</div>
+<p><code>species</code>, <code>island</code>, <code>sex</code>는 문자열 자료형인 <code>object</code>로 적재되었다. 이 자료형을 범주 자료형으로 변환한다.</p>
+<div id="a3b1bdc9" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_cat <span class="op">=</span> df.copy()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> [<span class="st">'species'</span>, <span class="st">'island'</span>, <span class="st">'sex'</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_cat[cat_cols] <span class="op">=</span> df[cat_cols].astype(<span class="st">'category'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df_cat.dtypes </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>species              category
+island               category
+bill_length_mm        float64
+bill_depth_mm         float64
+flipper_length_mm     float64
+body_mass_g           float64
+sex                  category
+year                    int64
+dtype: object</code></pre>
+</div>
+</div>
+<p><code>astype()</code> 함수는 넘파이 배열이나 판단스 데이터프레임에 있는 컬럼 요소의 자료형을 변환하는 함수이다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DataFrame.astype(dtype, copy<span class="op">=</span><span class="va">True</span>, errors<span class="op">=</span><span class="st">'raise'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>dtype</code>은 변경할 자료형을 뜻한다. - int, float, str, bool, category, datetime64 등</p>
 </section>
 <section id="데이터-구조-변형" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-구조-변형">데이터 구조 변형</h2>
+<section id="특정-컬럼-추출-및-파생-변수-생성" class="level3">
+<h3 class="anchored" data-anchor-id="특정-컬럼-추출-및-파생-변수-생성">특정 컬럼 추출 및 파생 변수 생성</h3>
+<div id="fd46d64b" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_cols <span class="op">=</span> df[[<span class="st">'species'</span>, <span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>]].copy()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df_cols[<span class="st">'bill_ratio'</span>] <span class="op">=</span> df_cols[<span class="st">'bill_length_mm'</span>] <span class="op">/</span> df_cols[<span class="st">'bill_depth_mm'</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df_cols.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">bill_ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Adelie</td>
+<td>39.1</td>
+<td>18.7</td>
+<td>2.090909</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Adelie</td>
+<td>39.5</td>
+<td>17.4</td>
+<td>2.270115</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Adelie</td>
+<td>40.3</td>
+<td>18.0</td>
+<td>2.238889</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Adelie</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Adelie</td>
+<td>36.7</td>
+<td>19.3</td>
+<td>1.901554</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
-<section id="변주형-데이터-처리" class="level2">
-<h2 class="anchored" data-anchor-id="변주형-데이터-처리">변주형 데이터 처리</h2>
+<section id="자료-구조-변경" class="level3">
+<h3 class="anchored" data-anchor-id="자료-구조-변경">자료 구조 변경</h3>
+<section id="long-format을-wide-format으로-변경" class="level4">
+<h4 class="anchored" data-anchor-id="long-format을-wide-format으로-변경">Long format을 Wide format으로 변경</h4>
+<p>Long format으로 구성된 자료를 Wide format으로 변경한다.</p>
+<div id="9814a3d6" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> df[[<span class="st">'species'</span>, <span class="st">'body_mass_g'</span>]].copy().reset_index()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 범주별 인덱스 부여</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df_long[<span class="st">'index'</span>] <span class="op">=</span> df_long.groupby(<span class="st">'species'</span>).cumcount()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df_long01 <span class="op">=</span> df_long.pivot(index<span class="op">=</span><span class="st">'index'</span>, columns<span class="op">=</span><span class="st">'species'</span>, values<span class="op">=</span><span class="st">'body_mass_g'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>df_long01</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">Adelie</th>
+<th data-quarto-table-cell-role="th">Chinstrap</th>
+<th data-quarto-table-cell-role="th">Gentoo</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">index</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>3750.0</td>
+<td>3500.0</td>
+<td>4500.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3800.0</td>
+<td>3900.0</td>
+<td>5700.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3250.0</td>
+<td>3650.0</td>
+<td>4450.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>NaN</td>
+<td>3525.0</td>
+<td>5700.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3450.0</td>
+<td>3725.0</td>
+<td>5400.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">147</th>
+<td>3475.0</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">148</th>
+<td>3450.0</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">149</th>
+<td>3750.0</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">150</th>
+<td>3700.0</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">151</th>
+<td>4000.0</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>152 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<div id="a4b1b898" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> df[[<span class="st">'species'</span>, <span class="st">'body_mass_g'</span>]].copy().reset_index()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_long02 <span class="op">=</span> df_long.pivot_table(index<span class="op">=</span><span class="va">None</span>, columns<span class="op">=</span><span class="st">'species'</span>, values<span class="op">=</span><span class="st">'body_mass_g'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>aggfunc<span class="op">=</span><span class="st">'mean'</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>df_long02</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">Adelie</th>
+<th data-quarto-table-cell-role="th">Chinstrap</th>
+<th data-quarto-table-cell-role="th">Gentoo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<td>3700.662252</td>
+<td>3733.088235</td>
+<td>5076.01626</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="32efe0b2" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> df[[<span class="st">'species'</span>, <span class="st">'body_mass_g'</span>]].copy().reset_index()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df_long03 <span class="op">=</span> df_long.pivot_table(index<span class="op">=</span><span class="va">None</span>, columns<span class="op">=</span><span class="st">'species'</span>, values<span class="op">=</span><span class="st">'body_mass_g'</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>aggfunc<span class="op">=</span><span class="st">'count'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df_long03</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">Adelie</th>
+<th data-quarto-table-cell-role="th">Chinstrap</th>
+<th data-quarto-table-cell-role="th">Gentoo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<td>151</td>
+<td>68</td>
+<td>123</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="wide-format을-long-format으로-변경" class="level4">
+<h4 class="anchored" data-anchor-id="wide-format을-long-format으로-변경">Wide format을 Long format으로 변경</h4>
+<p><code>df_long01</code> 데이터프레임을 이용하여 wide format을 long format으로 변경한다.</p>
+<div id="00a9b159" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_long02 <span class="op">=</span> df_long01.reset_index()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df_long02</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_long02.melt(id_vars<span class="op">=</span><span class="st">'index'</span>, var_name<span class="op">=</span><span class="st">'species'</span>, value_name<span class="op">=</span><span class="st">'body_mass_g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">index</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>Adelie</td>
+<td>3750.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>Adelie</td>
+<td>3800.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2</td>
+<td>Adelie</td>
+<td>3250.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3</td>
+<td>Adelie</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>4</td>
+<td>Adelie</td>
+<td>3450.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">451</th>
+<td>147</td>
+<td>Gentoo</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">452</th>
+<td>148</td>
+<td>Gentoo</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">453</th>
+<td>149</td>
+<td>Gentoo</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">454</th>
+<td>150</td>
+<td>Gentoo</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">455</th>
+<td>151</td>
+<td>Gentoo</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>456 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="범주형-데이터-처리" class="level2">
+<h2 class="anchored" data-anchor-id="범주형-데이터-처리">범주형 데이터 처리</h2>
+<section id="더미-변수-생성" class="level3">
+<h3 class="anchored" data-anchor-id="더미-변수-생성">더미 변수 생성</h3>
+<p>조건문을 통해 간단히 더미 변수를 생성할 수 있다.</p>
+<div id="b5d87ec4" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_dum <span class="op">=</span> df[[<span class="st">'species'</span>, <span class="st">'sex'</span>]].copy()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df_dum[<span class="st">'is_male'</span>] <span class="op">=</span> (df_dum[<span class="st">'sex'</span>] <span class="op">==</span> <span class="st">'male'</span>)<span class="op">*</span><span class="dv">1</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>df_dum.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">is_male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Adelie</td>
+<td>male</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Adelie</td>
+<td>female</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Adelie</td>
+<td>female</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Adelie</td>
+<td>NaN</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Adelie</td>
+<td>female</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="원핫-인코딩" class="level3">
+<h3 class="anchored" data-anchor-id="원핫-인코딩">원핫 인코딩</h3>
+<p>판다스 <code>pd.get_dummies()</code> 함수를 이용하여 간단히 더미 변수를 생성할 수 있다.</p>
+<div id="5138bf29" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_dum <span class="op">=</span> df[[<span class="st">'species'</span>, <span class="st">'sex'</span>]].copy()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(df_dum, columns<span class="op">=</span>[<span class="st">'species'</span>], drop_first<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">species_Chinstrap</th>
+<th data-quarto-table-cell-role="th">species_Gentoo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>male</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>female</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>female</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>NaN</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>female</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">339</th>
+<td>male</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">340</th>
+<td>female</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">341</th>
+<td>male</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">342</th>
+<td>male</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">343</th>
+<td>female</td>
+<td>True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+<p>344 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<p><code>drop_first=True</code> 인자를 통해 생성된 더비 변수 중 기준 범주 하나(첫 번째 변수)를 제거한다. 모든 범주를 더미화하게 되면 선형회귀에 있어 다중공선성 문제가 발생할 수 있다.</p>
+
+
+</section>
 </section>
 
 </main> <!-- /main -->

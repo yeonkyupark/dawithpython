@@ -80,7 +80,18 @@
     "href": "DP30_data_reshape.html",
     "title": "데이터 변형",
     "section": "",
-    "text": "자료형 처리",
+    "text": "자료형 처리\n데이터 변형은 적재한 데이터가 분석에 용이한 형태로 자료형이나 구조를 바꾸는 방법이다. wide format을 long format으로 변형하거나 범주형 변수를 원핫 인코딩을 통해 수치형 변수로 바꾸는 등이 이에 해당한다.\n실습 코드는 Palmer Penguins 데이터셋을 이용한다.\ndf.dtypes\n\nspecies               object\nisland                object\nbill_length_mm       float64\nbill_depth_mm        float64\nflipper_length_mm    float64\nbody_mass_g          float64\nsex                   object\nyear                   int64\ndtype: object\nspecies, island, sex는 문자열 자료형인 object로 적재되었다. 이 자료형을 범주 자료형으로 변환한다.\ndf_cat = df.copy()\n\ncat_cols = ['species', 'island', 'sex']\ndf_cat[cat_cols] = df[cat_cols].astype('category')\n\ndf_cat.dtypes \n\nspecies              category\nisland               category\nbill_length_mm        float64\nbill_depth_mm         float64\nflipper_length_mm     float64\nbody_mass_g           float64\nsex                  category\nyear                    int64\ndtype: object\nastype() 함수는 넘파이 배열이나 판단스 데이터프레임에 있는 컬럼 요소의 자료형을 변환하는 함수이다.\ndtype은 변경할 자료형을 뜻한다. - int, float, str, bool, category, datetime64 등",
+    "crumbs": [
+      "I. 데이터 처리",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 변형</span>"
+    ]
+  },
+  {
+    "objectID": "DP30_data_reshape.html#자료형-처리",
+    "href": "DP30_data_reshape.html#자료형-처리",
+    "title": "데이터 변형",
+    "section": "",
+    "text": "DataFrame.astype(dtype, copy=True, errors='raise')",
     "crumbs": [
       "I. 데이터 처리",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 변형</span>"
@@ -91,18 +102,18 @@
     "href": "DP30_data_reshape.html#데이터-구조-변형",
     "title": "데이터 변형",
     "section": "데이터 구조 변형",
-    "text": "데이터 구조 변형",
+    "text": "데이터 구조 변형\n\n특정 컬럼 추출 및 파생 변수 생성\n\ndf_cols = df[['species', 'bill_length_mm', 'bill_depth_mm']].copy()\n\ndf_cols['bill_ratio'] = df_cols['bill_length_mm'] / df_cols['bill_depth_mm']\n\ndf_cols.head()\n\n\n\n\n\n\n\n\nspecies\nbill_length_mm\nbill_depth_mm\nbill_ratio\n\n\n\n\n0\nAdelie\n39.1\n18.7\n2.090909\n\n\n1\nAdelie\n39.5\n17.4\n2.270115\n\n\n2\nAdelie\n40.3\n18.0\n2.238889\n\n\n3\nAdelie\nNaN\nNaN\nNaN\n\n\n4\nAdelie\n36.7\n19.3\n1.901554\n\n\n\n\n\n\n\n\n\n자료 구조 변경\n\nLong format을 Wide format으로 변경\nLong format으로 구성된 자료를 Wide format으로 변경한다.\n\ndf_long = df[['species', 'body_mass_g']].copy().reset_index()\n# 범주별 인덱스 부여\ndf_long['index'] = df_long.groupby('species').cumcount()\n\ndf_long01 = df_long.pivot(index='index', columns='species', values='body_mass_g')\ndf_long01\n\n\n\n\n\n\n\nspecies\nAdelie\nChinstrap\nGentoo\n\n\nindex\n\n\n\n\n\n\n\n0\n3750.0\n3500.0\n4500.0\n\n\n1\n3800.0\n3900.0\n5700.0\n\n\n2\n3250.0\n3650.0\n4450.0\n\n\n3\nNaN\n3525.0\n5700.0\n\n\n4\n3450.0\n3725.0\n5400.0\n\n\n...\n...\n...\n...\n\n\n147\n3475.0\nNaN\nNaN\n\n\n148\n3450.0\nNaN\nNaN\n\n\n149\n3750.0\nNaN\nNaN\n\n\n150\n3700.0\nNaN\nNaN\n\n\n151\n4000.0\nNaN\nNaN\n\n\n\n\n152 rows × 3 columns\n\n\n\n\ndf_long = df[['species', 'body_mass_g']].copy().reset_index()\n\ndf_long02 = df_long.pivot_table(index=None, columns='species', values='body_mass_g',\naggfunc='mean'\n)\ndf_long02\n\n\n\n\n\n\n\nspecies\nAdelie\nChinstrap\nGentoo\n\n\n\n\nbody_mass_g\n3700.662252\n3733.088235\n5076.01626\n\n\n\n\n\n\n\n\ndf_long = df[['species', 'body_mass_g']].copy().reset_index()\n\ndf_long03 = df_long.pivot_table(index=None, columns='species', values='body_mass_g',\naggfunc='count'\n)\ndf_long03\n\n\n\n\n\n\n\nspecies\nAdelie\nChinstrap\nGentoo\n\n\n\n\nbody_mass_g\n151\n68\n123\n\n\n\n\n\n\n\n\n\nWide format을 Long format으로 변경\ndf_long01 데이터프레임을 이용하여 wide format을 long format으로 변경한다.\n\ndf_long02 = df_long01.reset_index()\n\n# df_long02\ndf_long02.melt(id_vars='index', var_name='species', value_name='body_mass_g')\n\n\n\n\n\n\n\n\nindex\nspecies\nbody_mass_g\n\n\n\n\n0\n0\nAdelie\n3750.0\n\n\n1\n1\nAdelie\n3800.0\n\n\n2\n2\nAdelie\n3250.0\n\n\n3\n3\nAdelie\nNaN\n\n\n4\n4\nAdelie\n3450.0\n\n\n...\n...\n...\n...\n\n\n451\n147\nGentoo\nNaN\n\n\n452\n148\nGentoo\nNaN\n\n\n453\n149\nGentoo\nNaN\n\n\n454\n150\nGentoo\nNaN\n\n\n455\n151\nGentoo\nNaN\n\n\n\n\n456 rows × 3 columns",
     "crumbs": [
       "I. 데이터 처리",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 변형</span>"
     ]
   },
   {
-    "objectID": "DP30_data_reshape.html#변주형-데이터-처리",
-    "href": "DP30_data_reshape.html#변주형-데이터-처리",
+    "objectID": "DP30_data_reshape.html#범주형-데이터-처리",
+    "href": "DP30_data_reshape.html#범주형-데이터-처리",
     "title": "데이터 변형",
-    "section": "변주형 데이터 처리",
-    "text": "변주형 데이터 처리",
+    "section": "범주형 데이터 처리",
+    "text": "범주형 데이터 처리\n\n더미 변수 생성\n조건문을 통해 간단히 더미 변수를 생성할 수 있다.\n\ndf_dum = df[['species', 'sex']].copy()\n\ndf_dum['is_male'] = (df_dum['sex'] == 'male')*1\n\ndf_dum.head()\n\n\n\n\n\n\n\n\nspecies\nsex\nis_male\n\n\n\n\n0\nAdelie\nmale\n1\n\n\n1\nAdelie\nfemale\n0\n\n\n2\nAdelie\nfemale\n0\n\n\n3\nAdelie\nNaN\n0\n\n\n4\nAdelie\nfemale\n0\n\n\n\n\n\n\n\n\n\n원핫 인코딩\n판다스 pd.get_dummies() 함수를 이용하여 간단히 더미 변수를 생성할 수 있다.\n\ndf_dum = df[['species', 'sex']].copy()\n\npd.get_dummies(df_dum, columns=['species'], drop_first=True)\n\n\n\n\n\n\n\n\nsex\nspecies_Chinstrap\nspecies_Gentoo\n\n\n\n\n0\nmale\nFalse\nFalse\n\n\n1\nfemale\nFalse\nFalse\n\n\n2\nfemale\nFalse\nFalse\n\n\n3\nNaN\nFalse\nFalse\n\n\n4\nfemale\nFalse\nFalse\n\n\n...\n...\n...\n...\n\n\n339\nmale\nTrue\nFalse\n\n\n340\nfemale\nTrue\nFalse\n\n\n341\nmale\nTrue\nFalse\n\n\n342\nmale\nTrue\nFalse\n\n\n343\nfemale\nTrue\nFalse\n\n\n\n\n344 rows × 3 columns\n\n\n\ndrop_first=True 인자를 통해 생성된 더비 변수 중 기준 범주 하나(첫 번째 변수)를 제거한다. 모든 범주를 더미화하게 되면 선형회귀에 있어 다중공선성 문제가 발생할 수 있다.",
     "crumbs": [
       "I. 데이터 처리",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 변형</span>"
