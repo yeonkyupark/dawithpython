@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "데이터 분석 (파이썬)",
     "section": "",
-    "text": "들어가기\n본 자료에서는 실무에서 활용되는 데이터 분석, 가설 검정, 기계학습의 핵심 내용을 체계적으로 정리한다. 분석과 실습은 파이썬(Python 2025)을 기반으로 수행하며, 주요 라이브러리로는 넘파이(Numpy 2025)와 판다스(Pandas 2025)를 사용한다. 이를 통해 데이터 처리부터 통계적 검증, 기계학습 모델 적용까지 전체 흐름을 단계적으로 이해함을 그 목표로 한다.\n주요 내용은 다음과 같다.\n\n데이터 분석\n\n\n데이터 적재\n결측치 및 이상치 처리\n변수 분포, 관계, 패턴 탐색\n\n\n가설 검정\n\n\n가설 검정 조건\n주요 검정 기법\n검정 결과 해석\n\n\n기계학습\n\n\n회귀, 분류, 군집\n예측 및 의사결정\n\n그 외 필요한 내용은 부록에 수록한다.\n\n\n\n\nNumpy. 2025. “Numpy.” 2025. https://numpy.org/.\n\n\nPandas. 2025. “Pandas.” 2025. https://pandas.pydata.org/.\n\n\nPython. 2025. “Python Programming Language.” 2025. https://www.python.org/.",
+    "text": "들어가기\n본 자료에서는 실무에서 활용되는 데이터 분석, 가설 검정, 기계학습의 핵심 내용을 체계적으로 정리한다. 분석과 실습은 파이썬(Python 2025)을 기반으로 수행하며, 주요 라이브러리로는 넘파이(Numpy 2025)와 판다스(Pandas 2025)를 사용한다. 이를 통해 데이터 처리부터 통계적 검증, 기계학습 모델 적용까지 전체 흐름을 단계적으로 이해함을 그 목표로 한다.\n주요 내용은 다음과 같다.\n\n데이터 분석\n\n데이터 적재\n결측치 및 이상치 처리\n변수 분포, 관계, 패턴 탐색\n\n가설 검정\n\n가설 검정 조건\n주요 검정 기법\n검정 결과 해석\n\n기계학습\n\n회귀, 분류, 군집\n예측 및 의사결정\n\n\n그 외 필요한 내용은 부록에 수록한다.\n\n\n\n\nNumpy. 2025. “Numpy.” 2025. https://numpy.org/.\n\n\nPandas. 2025. “Pandas.” 2025. https://pandas.pydata.org/.\n\n\nPython. 2025. “Python Programming Language.” 2025. https://www.python.org/.",
     "crumbs": [
       "들어가기"
     ]
