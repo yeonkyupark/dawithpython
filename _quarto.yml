@@ -34,12 +34,12 @@ book:
         - feature_selection.qmd   # 변수선택
     - part: "II. 가설검정"
       chapters:
-        - hypothesis_test.qmd
+        - hypothesis_test.qmd     # 가설검정
     - part: "III. 기계학습"
       chapters:
-        - regression.qmd
-        - classification.qmd
-        - clustering.qmd
+        - regression.qmd          # 회귀분석
+        - classification.qmd      # 분류분석
+        - clustering.qmd          # 군집분석
     - part: "부록"
       chapters:
         - references.qmd
