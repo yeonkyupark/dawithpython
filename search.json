@@ -76,6 +76,182 @@
     ]
   },
   {
+    "objectID": "hypothesis_test.html",
+    "href": "hypothesis_test.html",
+    "title": "가설검정",
+    "section": "",
+    "text": "가설검정 개요",
+    "crumbs": [
+      "II. 가설검정",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>가설검정</span>"
+    ]
+  },
+  {
+    "objectID": "hypothesis_test.html#가설검정-개요",
+    "href": "hypothesis_test.html#가설검정-개요",
+    "title": "가설검정",
+    "section": "",
+    "text": "귀무가설(H₀)과 대립가설(H₁)\n유의수준(α)과 p-value",
+    "crumbs": [
+      "II. 가설검정",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>가설검정</span>"
+    ]
+  },
+  {
+    "objectID": "hypothesis_test.html#검정-조건",
+    "href": "hypothesis_test.html#검정-조건",
+    "title": "가설검정",
+    "section": "검정 조건",
+    "text": "검정 조건\n\n독립성\n정규성\n등분산성\n선형성",
+    "crumbs": [
+      "II. 가설검정",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>가설검정</span>"
+    ]
+  },
+  {
+    "objectID": "hypothesis_test.html#주요-가설검정-방법",
+    "href": "hypothesis_test.html#주요-가설검정-방법",
+    "title": "가설검정",
+    "section": "주요 가설검정 방법",
+    "text": "주요 가설검정 방법\n\nt-검정\n카이제곱 검정\nF-검정(ANOVA)",
+    "crumbs": [
+      "II. 가설검정",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>가설검정</span>"
+    ]
+  },
+  {
+    "objectID": "hypothesis_test.html#검정-결과-해석",
+    "href": "hypothesis_test.html#검정-결과-해석",
+    "title": "가설검정",
+    "section": "검정 결과 해석",
+    "text": "검정 결과 해석\n\n통계량의 의미\np-value 해석\n통계적 유의성과 실질적 의미",
+    "crumbs": [
+      "II. 가설검정",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>가설검정</span>"
+    ]
+  },
+  {
+    "objectID": "regression.html",
+    "href": "regression.html",
+    "title": "회귀분석",
+    "section": "",
+    "text": "선형회귀분석",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>회귀분석</span>"
+    ]
+  },
+  {
+    "objectID": "regression.html#다항회귀분석",
+    "href": "regression.html#다항회귀분석",
+    "title": "회귀분석",
+    "section": "다항회귀분석",
+    "text": "다항회귀분석",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>회귀분석</span>"
+    ]
+  },
+  {
+    "objectID": "regression.html#정규화-회귀분석",
+    "href": "regression.html#정규화-회귀분석",
+    "title": "회귀분석",
+    "section": "정규화 회귀분석",
+    "text": "정규화 회귀분석\n\nRidge 회귀\n\n\nLasso 회귀",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>회귀분석</span>"
+    ]
+  },
+  {
+    "objectID": "classification.html",
+    "href": "classification.html",
+    "title": "분류분석",
+    "section": "",
+    "text": "로지스틱 회귀",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>분류분석</span>"
+    ]
+  },
+  {
+    "objectID": "classification.html#knn",
+    "href": "classification.html#knn",
+    "title": "분류분석",
+    "section": "KNN",
+    "text": "KNN",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>분류분석</span>"
+    ]
+  },
+  {
+    "objectID": "classification.html#결정트리",
+    "href": "classification.html#결정트리",
+    "title": "분류분석",
+    "section": "결정트리",
+    "text": "결정트리",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>분류분석</span>"
+    ]
+  },
+  {
+    "objectID": "classification.html#svm",
+    "href": "classification.html#svm",
+    "title": "분류분석",
+    "section": "SVM",
+    "text": "SVM",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>분류분석</span>"
+    ]
+  },
+  {
+    "objectID": "classification.html#신경망",
+    "href": "classification.html#신경망",
+    "title": "분류분석",
+    "section": "신경망",
+    "text": "신경망",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>분류분석</span>"
+    ]
+  },
+  {
+    "objectID": "clustering.html",
+    "href": "clustering.html",
+    "title": "군집분석",
+    "section": "",
+    "text": "K-Means",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>군집분석</span>"
+    ]
+  },
+  {
+    "objectID": "clustering.html#계층적-군집",
+    "href": "clustering.html#계층적-군집",
+    "title": "군집분석",
+    "section": "계층적 군집",
+    "text": "계층적 군집",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>군집분석</span>"
+    ]
+  },
+  {
+    "objectID": "clustering.html#dbscan",
+    "href": "clustering.html#dbscan",
+    "title": "군집분석",
+    "section": "DBSCAN",
+    "text": "DBSCAN",
+    "crumbs": [
+      "III. 기계학습",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>군집분석</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "참고자료",
