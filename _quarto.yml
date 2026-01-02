@@ -28,19 +28,19 @@ book:
     - index.qmd
     - part: "I. 데이터 처리"
       chapters: 
-        - data_load_save.qmd      # 데이터 적재
-        - data_cleaning.qmd       # 데이터 정제
-        - data_reshape.qmd        # 데이터 변형
-        - data_transform.qmd      # 데이터 변환
-        - feature_selection.qmd   # 변수선택
+        - DP10_data_load_save.qmd      # 데이터 적재
+        - DP20_data_cleaning.qmd       # 데이터 정제
+        - DP30_data_reshape.qmd        # 데이터 변형
+        - DP40_data_transform.qmd      # 데이터 변환
+        - DP50_feature_selection.qmd   # 변수선택
     - part: "II. 가설검정"
       chapters:
-        - hypothesis_test.qmd     # 가설검정
+        - HT10_hypothesis_test.qmd     # 가설검정
     - part: "III. 기계학습"
       chapters:
-        - regression.qmd          # 회귀분석
-        - classification.qmd      # 분류분석
-        - clustering.qmd          # 군집분석
+        - ML10_regression.qmd          # 회귀분석
+        - ML20_classification.qmd      # 분류분석
+        - ML30_clustering.qmd          # 군집분석
     - part: "부록"
       chapters:
         - references.qmd
