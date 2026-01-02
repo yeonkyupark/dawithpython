@@ -1,7 +1,184 @@
 # 데이터 변환 
 
+```{python}
+import pandas as pd
+from palmerpenguins import load_penguins
+
+df = load_penguins()
+df.head()
+```
+
 ## 정규화와 표준화
+
+### 정규화
+
+정규화(Normalization)는 값 범위를 일정 구간으로 압축하는 방법으로 보통 [0, 1] 범위로 변환한다. 크기 비율이 중요한 경우 수행한다.
+
+$$
+x' = \frac{x - x_{min}}{x_{max} - x_{min}}
+$$
+
+위 예제는 `Min-Max Scaling`이며 최소값은 0, 최대값은 1을 갖는다. 참고로 이상치에 매우 민감하다.
+
+거리 기반 알고리즘, 신경망, 서로 단위나 범위가 다른 경우 사용한다.
+
+```{python}
+# 정규화 대상 컬럼
+cols = ["bill_length_mm", "bill_depth_mm", "body_mass_g"]
+df_norm = df[cols].copy()
+
+df_norm = (df_norm - df_norm.min()) / (df_norm.max() - df_norm.min())
+
+df_norm.head()
+```
+
+```{python}
+df_norm.describe()
+```
+
+### 표준화
+
+표준화(Standardization)는 평균을 0으로, 표준편차를 1로 데이터를 변환하는 방법이다. 분포 형태를 유지하면서 범위(스케일)을 조정한다.
+
+$$
+x' = \frac{x-\mu}{\sigma}
+$$
+
+표준화를 수행하면 평균이 0이 되고 표준편차는 1이된다. 정규분퐁 모델에 적합하고 이상치 영향은 존재하지만 정규화에 비해 완만하다. 주로 선형회귀, 로지스틱 회귀, PCA 그리고 대부분의 통계 및 기계학습 모델에 있어 기본값으로 사용된다.
+
+```{python}
+# 표준화 대상 컬럼
+cols = ["bill_length_mm", "bill_depth_mm", "body_mass_g"]
+df_std = df[cols].copy()
+
+df_std = (df_std - df_std.mean()) / df_std.std()
+
+df_std.head()
+```
+
+```{python}
+df_std.describe()
+```
+
+### scikit-learn Scaler
+
+`scikit-learn` 라이브러리에는 `MinMaxScaler`, `StandardScaler`를 제공한다.
+
+```{python}
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+# 정규화
+cols = ["bill_length_mm", "bill_depth_mm", "body_mass_g"]
+df_norm = df[cols].copy()
+
+minmax = MinMaxScaler()
+df_norm = minmax.fit_transform(df_norm)
+
+df_norm 
+```
+
+```{python}
+# 표준화
+cols = ["bill_length_mm", "bill_depth_mm", "body_mass_g"]
+df_std = df[cols].copy()
+
+standard = StandardScaler()
+df_std = standard.fit_transform(df_std)
+
+df_std
+```
+
+참고로, scikit-learn 라이브러리에서 표준화를 진행할 경우 표준편차를 모집단 기준으로 계산한다(ddof=0). 따라서 수식을 통해 표준화를 진행 경우 자유도 설정에 따라 값이 상이할 수 있다. 라이브러리와 수식 결과를 동일하게 맞추려면 수식 계산 시 `df.std(ddof=0)`과 같이 명시적으로 모집단 표준편차를 계산하도록 설정한다.
 
 ## 분포 변환
 
-- 로그/Box-Cox/Yeo-Jonhson 변환
+로그/Box-Cox/Yeo-Jonhson 변환은 왜도를 줄이고 분포를 안정화하기 위한 대표적인 수치형 데이터 변환 기법이다. 
+
+### 로그 변환
+
+로그 변환(Log Transform)은 큰 값을 강하게 압축하는 방법이다. 오른쪽으로 긴 꼬리(rightskewed) 분포 완화하는 가장 단순하고 직관적인 방법이다.
+
+$$
+x' = log(x+1)
+$$
+
+0 이상 값을 갖게되고(0 이하 값 없음) 이상치 영향을 감소시킨다. 분포 해석이 직관적이다. 일반적으로 매출, 인구수, 몸무게, 금액 데이터 등 지수적으로 증가하는 값에 사용한다.
+
+```{python}
+import numpy as np
+
+cols = ["bill_length_mm", "bill_depth_mm", "body_mass_g"]
+df_log = df[cols].copy()
+
+df_log = np.log(df_log)
+
+df_log
+```
+
+### Box-Cox 변환
+
+Box-Cox 변환은 로그 변환을 일반화한 방법이다. 최적의 지수($\lambda$)를 자동으로 찾는다. 또한 분포를 정규분포에 가깝게 변환한다.
+
+$$
+x' =
+\begin{cases}
+\dfrac{x^{\lambda} - 1}{\lambda}, & \lambda \neq 0 \\
+\log(x), & \lambda = 0
+\end{cases}
+$$
+
+양수 데이터만 사용이 가능(x>0)하다. 로그 변환은 Box-Cox의 한 형태이며 통계 분석에 자주 사용된다.
+
+```{python}
+from scipy.stats import boxcox
+
+df_bc = df.copy()
+
+# 결측치 제거 후 적용
+x = df["body_mass_g"].dropna()
+
+x_bc, lambda_bc = boxcox(x)
+
+df_bc.loc[x.index, "body_mass_boxcox"] = x_bc
+
+lambda_bc
+```
+
+```{python}
+x_bc
+```
+
+### Yeo-Johnson 변환
+
+Yeo-Jonhson 변환은 Box-Cox 확장판이다. 0과 음수까지 허용하는 방법으로 머신러닝 전처리에서 표준적으로 사용된다.
+
+라이브러리 사용 시 결측치를 제외한다.
+
+```{python}
+from sklearn.preprocessing import PowerTransformer
+
+pt = PowerTransformer(method="yeo-johnson")
+
+df_yj = df.copy()
+
+df_yj[["body_mass_yj"]] = pt.fit_transform(
+    df[["body_mass_g"]]
+)
+
+df_yj[['body_mass_g', 'body_mass_yj']]
+```
+
+위 3가지 변환을 비교 정리하면 다음과 같다.
+
+| 구분 | 로그 변환 (Log) | Box–Cox 변환 | Yeo–Johnson 변환 |
+|---|---|---|---|
+| 기본 목적 | 값 범위 압축, 왜도 완화 | 정규성에 가깝게 변환 | 정규성 개선 + 범용성 |
+| 자동 λ 추정 | ❌ | ⭕ | ⭕ |
+| 0 값 허용 | ❌ (log1p로 우회 가능) | ❌ | ⭕ |
+| 음수 값 허용 | ❌ | ❌ | ⭕ |
+| 수학적 관계 | 기본 로그 | 로그의 일반화 | Box–Cox 확장 |
+| 이상치 완화 | 중간 | 중간 | 중간 |
+| 통계 분석 적합성 | 보통 | 높음 | 보통 |
+| 머신러닝 활용 | 높음 | 제한적 | 매우 높음 |
+| 대표 사용 사례 | 매출, 금액, 인구수 | 회귀 분석, 통계 모델 | ML 전처리 파이프라인 |
+| 파이썬 구현 | `np.log`, `np.log1p` | `scipy.stats.boxcox` | `sklearn.PowerTransformer` |
