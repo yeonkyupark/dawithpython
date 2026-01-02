@@ -103,10 +103,3 @@ df_matched = pd.read_csv(
 
 print(df_matched)
 ```
-
-
-
-<br>
-<pre>
-마직막 편집일: 2025.12.28.
-</pre>
